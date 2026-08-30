@@ -1,0 +1,1 @@
+export { WhyRedViewSignoff } from './WhyRedViewSignoff';

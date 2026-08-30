@@ -1,0 +1,85 @@
+{
+  "name": "twenty-shared",
+  "private": true,
+  "sideEffects": false,
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "types": "src/index.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "npx vite build"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./constants": "./src/constants/index.ts",
+    "./utils": "./src/utils/index.ts",
+    "./*": "./src/*"
+  },
+  "files": [
+    "dist",
+    "ai",
+    "application",
+    "constants",
+    "database-events",
+    "i18n",
+    "logic-function",
+    "metadata",
+    "testing",
+    "timeline",
+    "translations",
+    "types",
+    "utils",
+    "vite",
+    "workflow",
+    "workspace"
+  ],
+  "typesVersions": {
+    "*": {
+      "ai": [
+        "dist/ai/index.d.ts"
+      ],
+      "application": [
+        "dist/application/index.d.ts"
+      ],
+      "constants": [
+        "dist/constants/index.d.ts"
+      ],
+      "database-events": [
+        "dist/database-events/index.d.ts"
+      ],
+      "i18n": [
+        "dist/i18n/index.d.ts"
+      ],
+      "logic-function": [
+        "dist/logic-function/index.d.ts"
+      ],
+      "metadata": [
+        "dist/metadata/index.d.ts"
+      ],
+      "testing": [
+        "dist/testing/index.d.ts"
+      ],
+      "timeline": [
+        "dist/timeline/index.d.ts"
+      ],
+      "translations": [
+        "dist/translations/index.d.ts"
+      ],
+      "types": [
+        "dist/types/index.d.ts"
+      ],
+      "utils": [
+        "dist/utils/index.d.ts"
+      ],
+      "vite": [
+        "dist/vite/index.d.ts"
+      ],
+      "workflow": [
+        "dist/workflow/index.d.ts"
+      ],
+      "workspace": [
+        "dist/workspace/index.d.ts"
+      ]
+    }
+  }
+}

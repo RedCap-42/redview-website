@@ -1,0 +1,1 @@
+export { WhyRedViewEditorials } from './WhyRedViewEditorials';

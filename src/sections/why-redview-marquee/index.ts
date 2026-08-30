@@ -1,0 +1,1 @@
+export { WhyRedViewMarquee } from './WhyRedViewMarquee';
