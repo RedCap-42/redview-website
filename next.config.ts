@@ -116,7 +116,9 @@ const nextConfig: LinariaConfig = {
         destination: 'https://twenty-main.com/:path*',
         permanent: true,
       },
-      // Strip the source-locale prefix: /en/foo → /foo (301).
+      // Strip the source-locale prefix: /fr/foo → /foo (301).
+      { source: '/fr', destination: '/', statusCode: 301 },
+      { source: '/fr/:path*', destination: '/:path*', statusCode: 301 },
       { source: '/en', destination: '/', statusCode: 301 },
       { source: '/en/:path*', destination: '/:path*', statusCode: 301 },
       // /partners/list folded into the lead page, whose directory zone is the

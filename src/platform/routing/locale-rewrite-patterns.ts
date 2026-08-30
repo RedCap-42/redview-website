@@ -33,14 +33,14 @@ export const buildLocaleRewrites = (
   ].join('|');
 
   return [
-    { source: '/', destination: '/en' },
+    { source: '/', destination: '/fr' },
     {
       source: `/:first((?!(?:${localeAlternation}|${reservedAlternation})(?=/))[^/.]+)/:rest+`,
-      destination: '/en/:first/:rest+',
+      destination: '/fr/:first/:rest+',
     },
     {
       source: `/:rest((?!${terminalExclusions}).+)`,
-      destination: '/en/:rest',
+      destination: '/fr/:rest',
     },
   ];
 };
