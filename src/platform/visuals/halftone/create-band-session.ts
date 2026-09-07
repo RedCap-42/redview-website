@@ -47,21 +47,6 @@ function setPrimaryLightPosition(
 // authored-constant across camera distances and container sizes.
 type ViewportRect = { x: number; y: number; width: number; height: number };
 
-function clampRectToViewport(
-  rect: ViewportRect,
-  viewportWidth: number,
-  viewportHeight: number,
-): ViewportRect | null {
-  const minX = Math.max(rect.x, 0);
-  const minY = Math.max(rect.y, 0);
-  const maxX = Math.min(rect.x + rect.width, viewportWidth);
-  const maxY = Math.min(rect.y + rect.height, viewportHeight);
-  if (maxX <= minX || maxY <= minY) {
-    return null;
-  }
-  return { x: minX, y: minY, width: maxX - minX, height: maxY - minY };
-}
-
 function getRectArea(rect: ViewportRect | null) {
   if (!rect) {
     return 0;
@@ -69,18 +54,36 @@ function getRectArea(rect: ViewportRect | null) {
   return Math.max(rect.width, 0) * Math.max(rect.height, 0);
 }
 
-function createBox3Corners(bounds: THREE.Box3) {
+// Static scratch pool for projection: zero GC allocations per frame.
+const SCRATCH_CORNERS = [
+  new THREE.Vector3(),
+  new THREE.Vector3(),
+  new THREE.Vector3(),
+  new THREE.Vector3(),
+  new THREE.Vector3(),
+  new THREE.Vector3(),
+  new THREE.Vector3(),
+  new THREE.Vector3(),
+];
+const scratchCorner = new THREE.Vector3();
+const scratchRefCamera = new THREE.PerspectiveCamera();
+const scratchCurrentOffset = new THREE.Vector3();
+const scratchRefOffset = new THREE.Vector3();
+const scratchCurrentRect: ViewportRect = { x: 0, y: 0, width: 0, height: 0 };
+const scratchReferenceRect: ViewportRect = { x: 0, y: 0, width: 0, height: 0 };
+const scratchLookAtTarget = new THREE.Vector3();
+
+function fillBox3Corners(bounds: THREE.Box3) {
   const { min, max } = bounds;
-  return [
-    new THREE.Vector3(min.x, min.y, min.z),
-    new THREE.Vector3(min.x, min.y, max.z),
-    new THREE.Vector3(min.x, max.y, min.z),
-    new THREE.Vector3(min.x, max.y, max.z),
-    new THREE.Vector3(max.x, min.y, min.z),
-    new THREE.Vector3(max.x, min.y, max.z),
-    new THREE.Vector3(max.x, max.y, min.z),
-    new THREE.Vector3(max.x, max.y, max.z),
-  ];
+  SCRATCH_CORNERS[0].set(min.x, min.y, min.z);
+  SCRATCH_CORNERS[1].set(min.x, min.y, max.z);
+  SCRATCH_CORNERS[2].set(min.x, max.y, min.z);
+  SCRATCH_CORNERS[3].set(min.x, max.y, max.z);
+  SCRATCH_CORNERS[4].set(max.x, min.y, min.z);
+  SCRATCH_CORNERS[5].set(max.x, min.y, max.z);
+  SCRATCH_CORNERS[6].set(max.x, max.y, min.z);
+  SCRATCH_CORNERS[7].set(max.x, max.y, max.z);
+  return SCRATCH_CORNERS;
 }
 
 function projectBox3ToViewport({
@@ -89,12 +92,14 @@ function projectBox3ToViewport({
   meshMatrixWorld,
   viewportWidth,
   viewportHeight,
+  outRect,
 }: {
   camera: THREE.Camera;
   localBounds: THREE.Box3;
   meshMatrixWorld: THREE.Matrix4;
   viewportWidth: number;
   viewportHeight: number;
+  outRect: ViewportRect;
 }): ViewportRect | null {
   if (localBounds.isEmpty() || viewportWidth <= 0 || viewportHeight <= 0) {
     return null;
@@ -106,18 +111,22 @@ function projectBox3ToViewport({
   let maxY = Number.NEGATIVE_INFINITY;
   let hasProjectedCorner = false;
 
-  for (const corner of createBox3Corners(localBounds)) {
-    corner.applyMatrix4(meshMatrixWorld).project(camera);
+  const corners = fillBox3Corners(localBounds);
+  for (let i = 0; i < 8; i += 1) {
+    scratchCorner
+      .copy(corners[i])
+      .applyMatrix4(meshMatrixWorld)
+      .project(camera);
     if (
-      !Number.isFinite(corner.x) ||
-      !Number.isFinite(corner.y) ||
-      !Number.isFinite(corner.z)
+      !Number.isFinite(scratchCorner.x) ||
+      !Number.isFinite(scratchCorner.y) ||
+      !Number.isFinite(scratchCorner.z)
     ) {
       continue;
     }
     hasProjectedCorner = true;
-    const x = (corner.x * 0.5 + 0.5) * viewportWidth;
-    const y = (1 - (corner.y * 0.5 + 0.5)) * viewportHeight;
+    const x = (scratchCorner.x * 0.5 + 0.5) * viewportWidth;
+    const y = (1 - (scratchCorner.y * 0.5 + 0.5)) * viewportHeight;
     minX = Math.min(minX, x);
     minY = Math.min(minY, y);
     maxX = Math.max(maxX, x);
@@ -128,11 +137,19 @@ function projectBox3ToViewport({
     return null;
   }
 
-  return clampRectToViewport(
-    { x: minX, y: minY, width: maxX - minX, height: maxY - minY },
-    viewportWidth,
-    viewportHeight,
-  );
+  const clampedMinX = Math.max(minX, 0);
+  const clampedMinY = Math.max(minY, 0);
+  const clampedMaxX = Math.min(maxX, viewportWidth);
+  const clampedMaxY = Math.min(maxY, viewportHeight);
+  if (clampedMaxX <= clampedMinX || clampedMaxY <= clampedMinY) {
+    return null;
+  }
+
+  outRect.x = clampedMinX;
+  outRect.y = clampedMinY;
+  outRect.width = clampedMaxX - clampedMinX;
+  outRect.height = clampedMaxY - clampedMinY;
+  return outRect;
 }
 
 function getMeshFootprintScale({
@@ -156,25 +173,35 @@ function getMeshFootprintScale({
     meshMatrixWorld,
     viewportWidth,
     viewportHeight,
+    outRect: scratchCurrentRect,
   });
 
-  const referenceCamera = camera.clone();
-  const currentOffset = referenceCamera.position.clone().sub(lookAtTarget);
-  const referenceOffset =
-    currentOffset.lengthSq() > 0
-      ? currentOffset.setLength(REFERENCE_PREVIEW_DISTANCE)
-      : new THREE.Vector3(0, 0, REFERENCE_PREVIEW_DISTANCE);
-  referenceCamera.position.copy(lookAtTarget).add(referenceOffset);
-  referenceCamera.lookAt(lookAtTarget);
-  referenceCamera.updateProjectionMatrix();
-  referenceCamera.updateMatrixWorld(true);
+  scratchRefCamera.fov = camera.fov;
+  scratchRefCamera.aspect = camera.aspect;
+  scratchRefCamera.near = camera.near;
+  scratchRefCamera.far = camera.far;
+  scratchRefCamera.position.copy(camera.position);
+
+  scratchCurrentOffset.copy(scratchRefCamera.position).sub(lookAtTarget);
+  if (scratchCurrentOffset.lengthSq() > 0) {
+    scratchRefOffset
+      .copy(scratchCurrentOffset)
+      .setLength(REFERENCE_PREVIEW_DISTANCE);
+  } else {
+    scratchRefOffset.set(0, 0, REFERENCE_PREVIEW_DISTANCE);
+  }
+  scratchRefCamera.position.copy(lookAtTarget).add(scratchRefOffset);
+  scratchRefCamera.lookAt(lookAtTarget);
+  scratchRefCamera.updateProjectionMatrix();
+  scratchRefCamera.updateMatrixWorld(true);
 
   const referenceRect = projectBox3ToViewport({
-    camera: referenceCamera,
+    camera: scratchRefCamera,
     localBounds,
     meshMatrixWorld,
     viewportWidth,
     viewportHeight,
+    outRect: scratchReferenceRect,
   });
 
   const currentArea = getRectArea(currentRect);
@@ -224,7 +251,10 @@ export async function createBandSession({
   canvas.style.width = '100%';
   container.appendChild(canvas);
 
-  const materialAssets = await halftoneMaterials.createAssets(renderer);
+  const isGlass = settings.material?.surface === 'glass';
+  const materialAssets = await halftoneMaterials.createAssets(renderer, {
+    isGlass,
+  });
 
   const scene3d = new THREE.Scene();
   scene3d.background = null;
@@ -266,14 +296,12 @@ export async function createBandSession({
   scene3d.add(mesh);
 
   const sceneTarget = createRenderTarget(getVirtualWidth(), getVirtualHeight());
-  const transmissionBacksideTarget = createRenderTarget(
-    getVirtualWidth(),
-    getVirtualHeight(),
-  );
-  const transmissionTarget = createRenderTarget(
-    getVirtualWidth(),
-    getVirtualHeight(),
-  );
+  const transmissionBacksideTarget = isGlass
+    ? createRenderTarget(getVirtualWidth(), getVirtualHeight())
+    : createRenderTarget(1, 1);
+  const transmissionTarget = isGlass
+    ? createRenderTarget(getVirtualWidth(), getVirtualHeight())
+    : createRenderTarget(1, 1);
   const fullScreenGeometry = new THREE.PlaneGeometry(2, 2);
   const orthographicCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
@@ -335,8 +363,10 @@ export async function createBandSession({
     camera.aspect = getWidth() / getHeight();
     camera.updateProjectionMatrix();
     sceneTarget.setSize(virtualWidth, virtualHeight);
-    transmissionBacksideTarget.setSize(virtualWidth, virtualHeight);
-    transmissionTarget.setSize(virtualWidth, virtualHeight);
+    if (isGlass) {
+      transmissionBacksideTarget.setSize(virtualWidth, virtualHeight);
+      transmissionTarget.setSize(virtualWidth, virtualHeight);
+    }
     halftoneMaterial.uniforms.effectResolution.value.set(
       virtualWidth,
       virtualHeight,
@@ -632,11 +662,11 @@ export async function createBandSession({
         (settings.previewDistance - camera.position.z) * 0.12;
     }
 
-    const lookAtTarget = new THREE.Vector3(0, meshOffsetY * 0.2, 0);
-    camera.lookAt(lookAtTarget);
+    scratchLookAtTarget.set(0, meshOffsetY * 0.2, 0);
+    camera.lookAt(scratchLookAtTarget);
     setPrimaryLightPosition(primaryLight, lightAngle, lightHeight);
     halftoneMaterial.uniforms.footprintScale.value =
-      getMeshHalftoneScale(lookAtTarget);
+      getMeshHalftoneScale(scratchLookAtTarget);
 
     if (!halftoneSettings.enabled) {
       halftoneMaterials.renderScene({

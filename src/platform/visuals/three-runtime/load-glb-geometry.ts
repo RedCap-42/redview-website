@@ -202,24 +202,33 @@ export function loadGlbGeometry(
     .then((gltf) => {
       gltf.scene.updateMatrixWorld(true);
 
-      const geometries: THREE.BufferGeometry[] = [];
+      const meshes: THREE.Mesh[] = [];
       gltf.scene.traverse((object) => {
-        if (!(object instanceof THREE.Mesh) || !object.geometry) {
-          return;
+        if (object instanceof THREE.Mesh && object.geometry) {
+          meshes.push(object);
         }
-        const geometry = (object.geometry as THREE.BufferGeometry).clone();
-        if (!geometry.attributes.normal) {
-          geometry.computeVertexNormals();
-        }
-        geometry.applyMatrix4(object.matrixWorld);
-        geometries.push(geometry);
       });
 
-      if (geometries.length === 0) {
+      if (meshes.length === 0) {
         throw new Error(`GLB contains no mesh geometry: ${url}`);
       }
 
-      return normalizeGeometry(mergeGeometries(geometries), options);
+      let mergedGeometry: THREE.BufferGeometry;
+      if (meshes.length === 1) {
+        const singleGeometry = meshes[0].geometry as THREE.BufferGeometry;
+        singleGeometry.applyMatrix4(meshes[0].matrixWorld);
+        mergedGeometry = singleGeometry;
+      } else {
+        const geometries: THREE.BufferGeometry[] = [];
+        for (const mesh of meshes) {
+          const geometry = (mesh.geometry as THREE.BufferGeometry).clone();
+          geometry.applyMatrix4(mesh.matrixWorld);
+          geometries.push(geometry);
+        }
+        mergedGeometry = mergeGeometries(geometries);
+      }
+
+      return normalizeGeometry(mergedGeometry, options);
     })
     .catch((error: unknown) => {
       geometryCache.delete(cacheKey);

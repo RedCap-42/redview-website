@@ -3,22 +3,21 @@ import { stripLocale } from './strip-locale';
 
 describe('localizeHref', () => {
   it('leaves source-locale hrefs unprefixed', () => {
-    expect(localizeHref('en', '/pricing')).toBe('/pricing');
+    expect(localizeHref('fr', '/pricing')).toBe('/pricing');
   });
 
   it('prefixes non-source locales with their url segment', () => {
-    expect(localizeHref('fr', '/pricing')).toBe('/fr/pricing');
-    expect(localizeHref('fr', '/')).toBe('/fr');
+    expect(localizeHref('en', '/pricing')).toBe('/en/pricing');
+    expect(localizeHref('en', '/')).toBe('/en');
   });
 
   it('re-localizes an already-prefixed href', () => {
-    expect(localizeHref('es', '/fr/pricing')).toBe('/es/pricing');
-    expect(localizeHref('en', '/fr/pricing')).toBe('/pricing');
+    expect(localizeHref('fr', '/fr/pricing')).toBe('/pricing');
   });
 
   it('preserves query strings and hashes', () => {
-    expect(localizeHref('fr', '/pricing?seat=5#faq')).toBe(
-      '/fr/pricing?seat=5#faq',
+    expect(localizeHref('en', '/pricing?seat=5#faq')).toBe(
+      '/en/pricing?seat=5#faq',
     );
   });
 

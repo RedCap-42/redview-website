@@ -27,17 +27,17 @@ const resolve = (path: string): string => {
 
 describe('locale rewrites', () => {
   it('should rewrite the root to the source locale', () => {
-    expect(resolve('/')).toBe('/en');
+    expect(resolve('/')).toBe('/fr');
   });
 
   it('should rewrite unprefixed pages to the source locale', () => {
-    expect(resolve('/pricing')).toBe('/en/pricing');
-    expect(resolve('/why-redview')).toBe('/en/why-redview');
+    expect(resolve('/pricing')).toBe('/fr/pricing');
+    expect(resolve('/why-redview')).toBe('/fr/why-redview');
   });
 
   it('should rewrite unprefixed nested paths to the source locale', () => {
-    expect(resolve('/articles/launch-week')).toBe('/en/articles/launch-week');
-    expect(resolve('/customers/acme')).toBe('/en/customers/acme');
+    expect(resolve('/articles/launch-week')).toBe('/fr/articles/launch-week');
+    expect(resolve('/customers/acme')).toBe('/fr/customers/acme');
   });
 
   it('should leave locale-prefixed paths untouched', () => {

@@ -629,10 +629,22 @@ function createFallbackGlassBackdropTexture(renderer: THREE.WebGLRenderer) {
 
 // The glass environment drives through-glass brightness (and with it the
 // band dash density); the near-black fallback only covers a failed fetch.
+// Solid-surface materials skip the equirectangular glass PMREM and image
+// fetch entirely.
 async function createAssets(
   renderer: THREE.WebGLRenderer,
+  options?: { isGlass?: boolean },
 ): Promise<HalftoneMaterialAssets> {
   const solidEnvironmentTexture = createEnvironmentTexture(renderer);
+  if (options?.isGlass === false) {
+    const fallbackTexture = createFallbackGlassBackdropTexture(renderer);
+    return {
+      glassBackgroundTexture: fallbackTexture,
+      glassEnvironmentTexture: fallbackTexture,
+      glassTransmissionScene: createStudioGlassEnvironmentScene(),
+      solidEnvironmentTexture,
+    };
+  }
   try {
     const glassAssets = await loadGlassEnvironmentAssets(renderer);
     return {
@@ -642,8 +654,9 @@ async function createAssets(
       solidEnvironmentTexture,
     };
   } catch {
+    const fallbackTexture = createFallbackGlassBackdropTexture(renderer);
     return {
-      glassBackgroundTexture: createFallbackGlassBackdropTexture(renderer),
+      glassBackgroundTexture: fallbackTexture,
       glassEnvironmentTexture: createStudioGlassEnvironmentTexture(renderer),
       glassTransmissionScene: createStudioGlassEnvironmentScene(),
       solidEnvironmentTexture,

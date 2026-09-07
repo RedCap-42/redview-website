@@ -30,6 +30,8 @@ const deploymentId = process.env.DEPLOYMENT_ID;
 const nextConfig: LinariaConfig = {
   deploymentId,
   reactCompiler: true,
+  poweredByHeader: false,
+  compress: true,
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
@@ -68,7 +70,7 @@ const nextConfig: LinariaConfig = {
         headers: SECURITY_HEADERS,
       },
       {
-        source: '/(images|illustrations|lottie)/:path*',
+        source: '/(images|illustrations|lottie|models|fonts)/:path*',
         headers: [
           {
             key: 'Cache-Control',

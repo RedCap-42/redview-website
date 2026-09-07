@@ -1,0 +1,7 @@
+node_modules
+.next
+.git
+.wrangler
+.dev.vars
+.env.local
+npm-debug.log*

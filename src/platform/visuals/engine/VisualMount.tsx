@@ -16,8 +16,8 @@ import { WEBGL_CONTEXT_LOST_EVENT } from './webgl-context-lost-event';
 const LAZY_ROOT_MARGIN = '50% 0px 50% 0px';
 const PRIORITY_ROOT_MARGIN = '125% 0px 125% 0px';
 const EAGER_ROOT_MARGIN = '600% 0px 600% 0px';
-const OUT_OF_VIEW_DISPOSE_MS = 4000;
-const PRIORITY_OUT_OF_VIEW_DISPOSE_MS = 1500;
+const OUT_OF_VIEW_DISPOSE_MS = 20000;
+const PRIORITY_OUT_OF_VIEW_DISPOSE_MS = 10000;
 
 // display: contents would have no box, and a box is exactly what the
 // viewport observer and the scene container need — fill the slot.

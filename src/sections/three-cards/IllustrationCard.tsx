@@ -178,6 +178,7 @@ export function IllustrationCard({ card }: { card: IllustrationCardRecord }) {
             CARD_MODEL_CONFIGS[card.illustration].geometryOptions
           }
           initialPose={CARD_MODEL_CONFIGS[card.illustration].initialPose}
+          loading="eager"
           modelUrl={CARD_MODEL_CONFIGS[card.illustration].modelUrl}
           settings={CARD_MODEL_CONFIGS[card.illustration].settings}
         />
