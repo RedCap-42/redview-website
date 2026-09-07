@@ -7,7 +7,7 @@ RUN apk add --no-cache libc6-compat
 COPY package*.json ./
 COPY packages/ ./packages/
 
-RUN npm ci
+RUN npm ci --legacy-peer-deps
 
 COPY . .
 
