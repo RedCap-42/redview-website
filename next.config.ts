@@ -123,6 +123,17 @@ const nextConfig: LinariaConfig = {
       { source: '/fr/:path*', destination: '/:path*', statusCode: 301 },
       { source: '/en', destination: '/', statusCode: 301 },
       { source: '/en/:path*', destination: '/:path*', statusCode: 301 },
+      // Redirect legacy auth paths to the RedView App
+      {
+        source: '/auth',
+        destination: process.env.NEXT_PUBLIC_APP_URL || 'http://app.141.145.220.99.sslip.io',
+        permanent: false,
+      },
+      {
+        source: '/auth/:path*',
+        destination: process.env.NEXT_PUBLIC_APP_URL || 'http://app.141.145.220.99.sslip.io',
+        permanent: false,
+      },
       // /partners/list folded into the lead page, whose directory zone is the
       // same grid. Both the unprefixed and the locale-prefixed URLs were in the
       // sitemap, so both need the 308.

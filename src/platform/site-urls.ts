@@ -17,7 +17,7 @@ export const SITE_URLS: Record<
   | 'x',
   string
 > = {
-  appWelcome: 'https://red-view-landing-page.vercel.app/auth/login',
+  appWelcome: process.env.NEXT_PUBLIC_APP_URL || 'http://app.141.145.220.99.sslip.io',
   calBooking: 'https://cal.com/forms/f7841033-0a20-4958-8c92-4e34ec128a81',
   discord: 'https://discord.gg/cx5n4Jzs57',
   docsApi: 'https://red-view-landing-page.vercel.app/blog',
