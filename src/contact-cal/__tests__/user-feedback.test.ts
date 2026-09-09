@@ -67,16 +67,16 @@ describe('user feedback state & prefill', () => {
     expect(shouldOpenFeedbackFromUrl()).toBe(false);
   });
 
-  it('extracts user profile details from URL params into prefill', () => {
+  it('extracts user profile details from URL params into prefill at step 1', () => {
     window.history.pushState(
       {},
       '',
-      '/?feedback=open&step=3&email=rider%40example.com&firstName=Pierre&lastName=Martin&country=FR',
+      '/?feedback=open&step=1&email=rider%40example.com&firstName=Pierre&lastName=Martin&country=FR',
     );
 
     const prefill = getFeedbackPrefillFromUrl();
     expect(prefill).toEqual({
-      stepIndex: 2,
+      stepIndex: 0,
       email: 'rider@example.com',
       firstName: 'Pierre',
       lastName: 'Martin',

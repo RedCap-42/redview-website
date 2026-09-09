@@ -77,19 +77,12 @@ export function getFeedbackPrefillFromUrl(): Partial<UserFeedbackState> | null {
     if (description) prefill.description = description;
 
     const step = params.get('step');
-    if (
-      step === '3' ||
-      step === 'feedback' ||
-      (isFeedbackTriggered &&
-        step !== '1' &&
-        step !== '2' &&
-        step !== 'identity' &&
-        step !== 'sports')
-    ) {
+    if (step === '3' || step === 'feedback') {
       prefill.stepIndex = 2;
     } else if (step === '2' || step === 'sports') {
       prefill.stepIndex = 1;
-    } else if (step === '1' || step === 'identity') {
+    } else if (isFeedbackTriggered || step === '1' || step === 'identity') {
+      // Default to Step 1/3 (coordonnées) with prefilled user account details
       prefill.stepIndex = 0;
     }
 
