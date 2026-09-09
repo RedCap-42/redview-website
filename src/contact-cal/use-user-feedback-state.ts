@@ -21,13 +21,19 @@ export type UserFeedbackController = {
   setSubmitting: (value: boolean) => void;
   setSubmitError: (value: string | null) => void;
   setSubmitted: () => void;
-  reset: () => void;
+  reset: (prefill?: Partial<UserFeedbackState>) => void;
 };
 
-export function useUserFeedbackState(): UserFeedbackController {
+export function useUserFeedbackState(
+  initialPrefill?: Partial<UserFeedbackState> | null,
+): UserFeedbackController {
   const [state, dispatch] = useReducer(
     userFeedbackReducer,
     INITIAL_USER_FEEDBACK_STATE,
+    (base) => ({
+      ...base,
+      ...(initialPrefill ?? {}),
+    }),
   );
 
   const setField = useCallback(
@@ -69,8 +75,8 @@ export function useUserFeedbackState(): UserFeedbackController {
     dispatch({ type: 'SET_SUBMITTED' });
   }, []);
 
-  const reset = useCallback(() => {
-    dispatch({ type: 'RESET' });
+  const reset = useCallback((prefill?: Partial<UserFeedbackState>) => {
+    dispatch({ type: 'RESET', prefill });
   }, []);
 
   return {

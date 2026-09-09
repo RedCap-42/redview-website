@@ -134,6 +134,22 @@ const nextConfig: LinariaConfig = {
         destination: process.env.NEXT_PUBLIC_APP_URL || 'http://app.141.145.220.99.sslip.io',
         permanent: false,
       },
+      // Redirect feedback/questionnaire paths to landing page with feedback modal open at step 3
+      {
+        source: '/formulaire',
+        destination: '/?feedback=open&step=3',
+        permanent: false,
+      },
+      {
+        source: '/questionnaire',
+        destination: '/?feedback=open&step=3',
+        permanent: false,
+      },
+      {
+        source: '/feedback',
+        destination: '/?feedback=open&step=3',
+        permanent: false,
+      },
       // /partners/list folded into the lead page, whose directory zone is the
       // same grid. Both the unprefixed and the locale-prefixed URLs were in the
       // sitemap, so both need the 308.

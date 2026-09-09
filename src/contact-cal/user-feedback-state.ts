@@ -57,7 +57,7 @@ export type UserFeedbackAction =
   | { type: 'SET_SUBMITTING'; value: boolean }
   | { type: 'SET_SUBMIT_ERROR'; value: string | null }
   | { type: 'SET_SUBMITTED' }
-  | { type: 'RESET' };
+  | { type: 'RESET'; prefill?: Partial<UserFeedbackState> };
 
 export const INITIAL_USER_FEEDBACK_STATE: UserFeedbackState = {
   stepIndex: 0,
@@ -178,7 +178,14 @@ export function userFeedbackReducer(
     case 'SET_SUBMITTED':
       return { ...state, isSubmitted: true, isSubmitting: false };
     case 'RESET':
-      return INITIAL_USER_FEEDBACK_STATE;
+      return {
+        ...INITIAL_USER_FEEDBACK_STATE,
+        ...(action.prefill ?? {}),
+        fieldErrors: {},
+        submitError: null,
+        isSubmitting: false,
+        isSubmitted: false,
+      };
     default:
       return state;
   }

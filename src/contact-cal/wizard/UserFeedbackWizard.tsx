@@ -20,11 +20,84 @@ import {
   type UserFeedbackController,
   useUserFeedbackState,
 } from '../use-user-feedback-state';
-import { validateUserFeedbackStep } from '../user-feedback-state';
+import {
+  type UserFeedbackState,
+  validateUserFeedbackStep,
+} from '../user-feedback-state';
 import { UserFeedbackSuccess } from './UserFeedbackSuccess';
 import { FeedbackStep } from './steps/FeedbackStep';
 import { IdentityStep } from './steps/IdentityStep';
 import { SportsStep } from './steps/SportsStep';
+
+export function getFeedbackPrefillFromUrl(): Partial<UserFeedbackState> | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const hash = window.location.hash.toLowerCase();
+
+    const isFeedbackTriggered =
+      params.has('feedback') ||
+      params.has('formulaire') ||
+      params.has('questionnaire') ||
+      params.get('modal') === 'feedback' ||
+      hash.includes('feedback') ||
+      hash.includes('formulaire') ||
+      hash.includes('questionnaire');
+
+    const prefill: Partial<UserFeedbackState> = {};
+
+    const email = params.get('email');
+    if (email) prefill.email = email;
+
+    const firstName =
+      params.get('firstName') ||
+      params.get('firstname') ||
+      params.get('prenom');
+    if (firstName) prefill.firstName = firstName;
+
+    const lastName =
+      params.get('lastName') ||
+      params.get('lastname') ||
+      params.get('nom');
+    if (lastName) prefill.lastName = lastName;
+
+    const country = params.get('country') || params.get('pays');
+    if (country) prefill.country = country.toUpperCase();
+
+    const feature = params.get('feature');
+    if (feature) prefill.feature = feature as any;
+
+    const feedbackType =
+      params.get('feedbackType') ||
+      params.get('type') ||
+      params.get('category');
+    if (feedbackType) prefill.feedbackType = feedbackType as any;
+
+    const description = params.get('description');
+    if (description) prefill.description = description;
+
+    const step = params.get('step');
+    if (
+      step === '3' ||
+      step === 'feedback' ||
+      (isFeedbackTriggered &&
+        step !== '1' &&
+        step !== '2' &&
+        step !== 'identity' &&
+        step !== 'sports')
+    ) {
+      prefill.stepIndex = 2;
+    } else if (step === '2' || step === 'sports') {
+      prefill.stepIndex = 1;
+    } else if (step === '1' || step === 'identity') {
+      prefill.stepIndex = 0;
+    }
+
+    return Object.keys(prefill).length > 0 ? prefill : null;
+  } catch {
+    return null;
+  }
+}
 
 const COPY = USER_FEEDBACK_COPY;
 const STEPS = USER_FEEDBACK_STEP_IDS;
@@ -160,7 +233,7 @@ export function UserFeedbackWizard({
   resetSignal?: number;
 }) {
   const { i18n } = useLingui();
-  const controller = useUserFeedbackState();
+  const controller = useUserFeedbackState(getFeedbackPrefillFromUrl());
   const {
     goBack,
     goNext,
@@ -172,7 +245,8 @@ export function UserFeedbackWizard({
   } = controller;
 
   useEffect(() => {
-    reset();
+    const prefill = getFeedbackPrefillFromUrl();
+    reset(prefill ?? undefined);
   }, [resetSignal, reset]);
 
   const stepIndex = state.stepIndex;
