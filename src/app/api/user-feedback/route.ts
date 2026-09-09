@@ -83,7 +83,7 @@ export async function POST(request: Request) {
       );
     }
     const fromAddress =
-      process.env.RESEND_FROM || 'RedView Feedback <onboarding@resend.dev>';
+      process.env.RESEND_FROM || 'RedView Feedback <noreply@auth.redview.app>';
     const recipient =
       process.env.FEEDBACK_RECIPIENT_EMAIL || 'redview.app@proton.me';
 
@@ -223,7 +223,7 @@ export async function POST(request: Request) {
       `[user-feedback] Sending feedback email for "${userName}" (${email}) to ${recipient} via Resend...`,
     );
 
-    const resendResponse = await fetch('https://api.resend.com/emails', {
+    let resendResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${apiKey}`,
@@ -238,7 +238,36 @@ export async function POST(request: Request) {
       }),
     });
 
-    const resendData = await resendResponse.json().catch(() => ({}));
+    let resendData = await resendResponse.json().catch(() => ({}));
+
+    // If custom domain is pending verification, fallback to onboarding@resend.dev
+    if (
+      !resendResponse.ok &&
+      fromAddress !== 'RedView Feedback <onboarding@resend.dev>'
+    ) {
+      console.warn(
+        `[user-feedback] Resend sending from ${fromAddress} returned ${resendResponse.status} (${resendData?.message}). Testing fallback to onboarding@resend.dev...`,
+      );
+      const fallbackResponse = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: 'RedView Feedback <onboarding@resend.dev>',
+          to: [recipient],
+          subject: `[Feedback RedView] ${categoryLabel} · ${featureLabel} (${userName})`,
+          html,
+          text: `Nouveau retour utilisateur RedView:\n\nDe: ${userName} (${email})\nPays: ${country}\nSport: ${sportLabel} (${levelLabel})\nFonctionnalité: ${featureLabel}\nCatégorie: ${categoryLabel}\n\nDescription:\n${description}\n\nDate: ${submittedAt}`,
+        }),
+      });
+      const fallbackData = await fallbackResponse.json().catch(() => ({}));
+      if (fallbackResponse.ok) {
+        resendResponse = fallbackResponse;
+        resendData = fallbackData;
+      }
+    }
 
     if (!resendResponse.ok) {
       console.error('[user-feedback] Resend API error:', resendData);
