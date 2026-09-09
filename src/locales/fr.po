@@ -2691,6 +2691,11 @@ msgstr "Conçu et éprouvé pour les compétitions les plus exigeantes au monde 
 msgid "Conditions générales"
 msgstr "Conditions générales"
 
+#. js-lingui-id: GFAjPv
+#: src/platform/routing/static-website-routes.ts
+msgid "Conditions Générales — RedView"
+msgstr "Conditions Générales — RedView"
+
 #. js-lingui-id: YdPA2M
 #: src/app/[locale]/(site)/terms/page.tsx
 msgid "Conditions Générales d'Utilisation"
@@ -2698,8 +2703,8 @@ msgstr "Conditions Générales d'Utilisation"
 
 #. js-lingui-id: /z8GDy
 #: src/platform/routing/static-website-routes.ts
-msgid "Conditions Générales d'Utilisation — RedView"
-msgstr "Conditions Générales d'Utilisation — RedView"
+#~ msgid "Conditions Générales d'Utilisation — RedView"
+#~ msgstr "Conditions Générales d'Utilisation — RedView"
 
 #. js-lingui-id: ADQnty
 #: src/contact-cal/data/user-feedback-options.ts
@@ -4786,6 +4791,11 @@ msgstr "Germany 🇩🇪"
 #~ msgid "Gestion des cols et vallées"
 #~ msgstr ""
 
+#. js-lingui-id: O2V3JT
+#: src/sections/footer/ManageCookiesButton.tsx
+msgid "Gestion des cookies"
+msgstr "Gestion des cookies"
+
 #. js-lingui-id: pcmAXr
 #: src/case-studies/case-study-stories.ts
 #: src/case-studies/case-study-stories.ts
@@ -6083,8 +6093,13 @@ msgstr "Les cartes actuelles manquent de précision, *les erreurs de navigation 
 
 #. js-lingui-id: r/4rce
 #: src/platform/routing/static-website-routes.ts
-msgid "Les conditions générales d'utilisation régissant l'accès et l'usage de la plateforme géospatiale RedView."
-msgstr "Les conditions générales d'utilisation régissant l'accès et l'usage de la plateforme géospatiale RedView."
+#~ msgid "Les conditions générales d'utilisation régissant l'accès et l'usage de la plateforme géospatiale RedView."
+#~ msgstr "Les conditions générales d'utilisation régissant l'accès et l'usage de la plateforme géospatiale RedView."
+
+#. js-lingui-id: 8jZKc4
+#: src/platform/routing/static-website-routes.ts
+msgid "Les conditions générales régissant l'accès et l'usage de la plateforme géospatiale RedView."
+msgstr "Les conditions générales régissant l'accès et l'usage de la plateforme géospatiale RedView."
 
 #. js-lingui-id: cnfNWS
 #: src/sections/faq/faq.data.ts
@@ -6430,6 +6445,26 @@ msgstr "Même trace"
 #: src/partners-marketplace/served-geo-labels.ts
 msgid "MENA"
 msgstr "MENA"
+
+#. js-lingui-id: /tD0pI
+#: src/sections/footer/footer.data.ts
+msgid "Mentions légales"
+msgstr "Mentions légales"
+
+#. js-lingui-id: 6jHOTT
+#: src/app/[locale]/(site)/legal-notice/page.tsx
+msgid "Mentions Légales"
+msgstr "Mentions Légales"
+
+#. js-lingui-id: xYefho
+#: src/platform/routing/static-website-routes.ts
+msgid "Mentions Légales — RedView"
+msgstr "Mentions Légales — RedView"
+
+#. js-lingui-id: W3oO9f
+#: src/platform/routing/static-website-routes.ts
+msgid "Mentions légales de la plateforme RedView — Informations sur l'éditeur, l'hébergement et la propriété intellectuelle."
+msgstr "Mentions légales de la plateforme RedView — Informations sur l'éditeur, l'hébergement et la propriété intellectuelle."
 
 #. js-lingui-id: hoVTd1
 #: src/contact-cal/user-feedback-copy.ts
@@ -7961,6 +7996,42 @@ msgstr "Politique de confidentialité"
 #: src/platform/routing/static-website-routes.ts
 msgid "Politique de confidentialité — RedView"
 msgstr "Politique de confidentialité — RedView"
+
+#. js-lingui-id: nnNBd3
+#: src/app/[locale]/(site)/cookie-policy/page.tsx
+#: src/sections/footer/footer.data.ts
+msgid "Politique de cookies"
+msgstr "Politique de cookies"
+
+#. js-lingui-id: +GgbAy
+#: src/platform/routing/static-website-routes.ts
+msgid "Politique de Cookies — RedView"
+msgstr "Politique de Cookies — RedView"
+
+#. js-lingui-id: Y8+EnR
+#: src/platform/routing/static-website-routes.ts
+msgid "Politique de gestion des cookies et traceurs de RedView conforme aux recommandations de la CNIL et du RGPD."
+msgstr "Politique de gestion des cookies et traceurs de RedView conforme aux recommandations de la CNIL et du RGPD."
+
+#. js-lingui-id: j3FABY
+#: src/sections/footer/footer.data.ts
+msgid "Politique de remboursement"
+msgstr "Politique de remboursement"
+
+#. js-lingui-id: 9b3b9y
+#: src/app/[locale]/(site)/refund-policy/page.tsx
+msgid "Politique de remboursement & rétractation"
+msgstr "Politique de remboursement & rétractation"
+
+#. js-lingui-id: 6364Y7
+#: src/platform/routing/static-website-routes.ts
+msgid "Politique de Remboursement & Rétractation — RedView"
+msgstr "Politique de Remboursement & Rétractation — RedView"
+
+#. js-lingui-id: 29XAsc
+#: src/platform/routing/static-website-routes.ts
+msgid "Politique de remboursement, droit de rétractation de 14 jours et résiliation sans engagement des souscriptions RedView."
+msgstr "Politique de remboursement, droit de rétractation de 14 jours et résiliation sans engagement des souscriptions RedView."
 
 #. js-lingui-id: ixcE4J
 #: src/sections/product-feature/data/feature-tiles.ts

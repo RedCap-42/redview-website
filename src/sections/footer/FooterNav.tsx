@@ -18,6 +18,7 @@ import {
 import { Button, ExternalLink, MarkedDivider } from '@/ui';
 
 import { FOOTER, type FooterNavGroup } from './footer.data';
+import { ManageCookiesButton } from './ManageCookiesButton';
 
 const NavGrid = styled.nav`
   margin-block: ${spacing(10)};
@@ -158,6 +159,11 @@ function GroupBlock({ group }: { group: FooterNavGroup }) {
             )}
           </li>
         ))}
+        {group.id === 'footer-legal' && (
+          <li>
+            <ManageCookiesButton />
+          </li>
+        )}
       </LinkList>
       {group.ctas !== undefined && (
         <CtaColumn>

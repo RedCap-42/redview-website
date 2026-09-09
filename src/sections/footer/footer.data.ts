@@ -57,8 +57,11 @@ export const FOOTER: {
       id: 'footer-legal',
       title: msg`Légal`,
       links: [
+        { label: msg`Mentions légales`, href: '/legal-notice' },
         { label: msg`Politique de confidentialité`, href: '/privacy-policy' },
         { label: msg`Conditions générales`, href: '/terms' },
+        { label: msg`Politique de remboursement`, href: '/refund-policy' },
+        { label: msg`Politique de cookies`, href: '/cookie-policy' },
       ],
     },
     {

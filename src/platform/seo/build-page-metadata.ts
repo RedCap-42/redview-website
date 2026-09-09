@@ -67,6 +67,16 @@ export function buildPageMetadata({
     title: { absolute: resolvedTitle },
     description: resolvedDescription,
     robots: { index: indexed, follow: true },
+    icons: {
+      icon: [
+        { url: '/favicon.svg?v=redview1', type: 'image/svg+xml' },
+        { url: '/favicon.ico?v=redview1', sizes: 'any' },
+      ],
+      apple: [
+        { url: '/apple-icon.svg?v=redview1', type: 'image/svg+xml' },
+        { url: '/apple-touch-icon.png?v=redview1', sizes: '180x180', type: 'image/png' },
+      ],
+    },
     alternates: {
       canonical,
       languages: buildLanguageAlternates(path, locales),

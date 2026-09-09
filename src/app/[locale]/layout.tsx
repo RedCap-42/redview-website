@@ -8,6 +8,11 @@ import {
   type LocaleRouteParams,
 } from '@/platform/i18n/get-route-i18n';
 import { ContactCalModalRoot } from '@/contact-cal';
+import {
+  CookieBanner,
+  CookieConsentProvider,
+  CookiePreferencesModal,
+} from '@/sections/cookie-consent';
 import { I18nProvider } from '@/platform/i18n/I18nProvider';
 import { resolveLocaleParam } from '@/platform/i18n/resolve-locale-param';
 import { WEBSITE_LOCALE_LIST } from '@/platform/i18n/website-locale-list';
@@ -126,7 +131,13 @@ const LocaleLayout = async ({
         suppressHydrationWarning
       >
         <I18nProvider locale={locale} messages={MESSAGES_BY_LOCALE[locale]}>
-          <ContactCalModalRoot>{children}</ContactCalModalRoot>
+          <ContactCalModalRoot>
+            <CookieConsentProvider>
+              {children}
+              <CookieBanner />
+              <CookiePreferencesModal />
+            </CookieConsentProvider>
+          </ContactCalModalRoot>
         </I18nProvider>
       </body>
     </html>
