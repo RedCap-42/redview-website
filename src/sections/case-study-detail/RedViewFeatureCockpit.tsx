@@ -500,7 +500,7 @@ export function RedViewFeatureCockpit({ entry: _entry, slug }: RedViewFeatureCoc
           <VisualArea>
             <ImageLayer>
               <NextImage
-                alt={`Aperçu 3D ${config.title}`}
+                alt={`Visualisation 3D RedView : ${config.title} (${config.resolution})`}
                 fill
                 priority
                 sizes="(max-width: 1120px) 100vw, 1120px"

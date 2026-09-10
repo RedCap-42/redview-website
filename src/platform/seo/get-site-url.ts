@@ -1,4 +1,4 @@
-const DEFAULT_SITE_URL = 'https://red-view-landing-page.vercel.app';
+const DEFAULT_SITE_URL = 'https://redview.tech';
 
 export const getSiteUrl = (): string => {
   const configured = process.env.NEXT_PUBLIC_WEBSITE_URL;

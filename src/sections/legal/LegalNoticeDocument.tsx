@@ -14,7 +14,7 @@ export function LegalNoticeDocument() {
 
       <h2>1. Éditeur de la plateforme</h2>
       <p>
-        Le site internet accessible à l&apos;adresse <strong>redview.app</strong> (et ses sous-domaines associés) est un <strong>projet étudiant d&apos;innovation technologique</strong> dédié à la cartographie 3D et aux flux géospatiaux haute résolution.
+        Le site internet accessible à l&apos;adresse <strong>redview.tech</strong> (et ses sous-domaines associés) est un <strong>projet étudiant d&apos;innovation technologique</strong> dédié à la cartographie 3D et aux flux géospatiaux haute résolution.
       </p>
       <ul>
         <li>

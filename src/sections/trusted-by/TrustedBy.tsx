@@ -229,7 +229,7 @@ function Logo({
       title={name}
     >
       <NextImage
-        alt={name}
+        alt={`Technologie ${name} intégrée au moteur 3D RedView`}
         fill
         sizes={`${Math.ceil(heightPx * aspectRatio)}px`}
         src={src}

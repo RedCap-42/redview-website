@@ -140,6 +140,7 @@ const FOUNDERS = [
     heading: msg`Victor — Ultra-Endurance & Design`,
     href: SITE_URLS.instagramVictor,
     photoSrc: '/images/team/victor.png',
+    alt: msg`Portrait de Victor, cofondateur de RedView — Athlète d'ultra-endurance et designer`,
     body: msg`Victor est un cycliste d'ultra-endurance animé par un besoin constant de création et d'exploration. Designer de formation, il aborde chaque projet avec une exigence radicale et une attention absolue au détail. Pour remporter ses courses, il a dû développer ses propres outils et stratégies logistiques afin d'optimiser chaque paramètre de sa préparation. Après des années de compétition et plus de 20 000 kilomètres de bikepacking, Redview est l'aboutissement de cette démarche. C'est le moyen de partager enfin avec la communauté l'expertise et la précision qu'il a accumulées sur le terrain.`,
   },
   {
@@ -147,6 +148,7 @@ const FOUNDERS = [
     heading: msg`Simon — Architecture & Moteur 3D`,
     href: SITE_URLS.instagramSimon,
     photoSrc: '/images/team/simon.png',
+    alt: msg`Portrait de Simon, cofondateur et architecte du moteur cartographique 3D de RedView`,
     body: msg`Simon est là pour bousculer les standards. À seulement 17 ans, il est l'architecte technique et le développeur derrière Redview. Tout est parti d'un constat frustrant : avoir accès à de la donnée géographique brute d'une valeur inestimable, mais aucun outil pour l'exploiter efficacement et éviter les erreurs de navigation en montagne. Refusant le compromis habituel entre accessibilité et précision, il a conçu un moteur capable de traiter des données topographiques au demi-mètre près directement dans un navigateur standard.`,
   },
 ];
@@ -176,7 +178,7 @@ export function FeatureCards() {
               <CardImage>
                 <CardImageFrame>
                   <NextImage
-                    alt=""
+                    alt={i18n._(founder.alt)}
                     fill
                     sizes={`(max-width: 768px) 100vw, ${SCENE_DESIGN_WIDTH_PX}px`}
                     src={founder.photoSrc}

@@ -3,7 +3,13 @@ import {
   getRouteI18n,
   type LocaleRouteParams,
 } from '@/platform/i18n/get-route-i18n';
-import { buildRouteMetadata } from '@/platform/seo';
+import {
+  buildOrganizationJsonLd,
+  buildRouteMetadata,
+  buildSoftwareApplicationJsonLd,
+  buildWebSiteJsonLd,
+  JsonLd,
+} from '@/platform/seo';
 import { Faq } from '@/sections/faq';
 import { FeatureCards } from '@/sections/feature-cards';
 import { Helped } from '@/sections/helped';
@@ -28,6 +34,9 @@ export default async function HomePage({
 
   return (
     <>
+      <JsonLd data={buildOrganizationJsonLd()} />
+      <JsonLd data={buildSoftwareApplicationJsonLd()} />
+      <JsonLd data={buildWebSiteJsonLd()} />
       <Menu communityStats={communityStats} scheme="dark" />
       <main>
         <HomeHero />
@@ -42,3 +51,4 @@ export default async function HomePage({
     </>
   );
 }
+

@@ -141,13 +141,13 @@ const LocaleLayout = async ({
           </ContactCalModalRoot>
         </I18nProvider>
         <Script
-          src="http://analytics.141.145.220.99.sslip.io/script.js"
+          src="https://analytics.redview.tech/script.js"
           data-website-id="73b66730-e760-4011-bf4e-0d84ac6c3230"
           data-performance="true"
           strategy="afterInteractive"
         />
         <Script
-          src="http://analytics.141.145.220.99.sslip.io/recorder.js"
+          src="https://analytics.redview.tech/recorder.js"
           data-website-id="73b66730-e760-4011-bf4e-0d84ac6c3230"
           strategy="afterInteractive"
         />

@@ -126,12 +126,12 @@ const nextConfig: LinariaConfig = {
       // Redirect legacy auth paths to the RedView App
       {
         source: '/auth',
-        destination: process.env.NEXT_PUBLIC_APP_URL || 'http://app.141.145.220.99.sslip.io',
+        destination: process.env.NEXT_PUBLIC_APP_URL || 'https://app.redview.tech',
         permanent: false,
       },
       {
         source: '/auth/:path*',
-        destination: process.env.NEXT_PUBLIC_APP_URL || 'http://app.141.145.220.99.sslip.io',
+        destination: process.env.NEXT_PUBLIC_APP_URL || 'https://app.redview.tech',
         permanent: false,
       },
       // Redirect feedback/questionnaire paths to landing page with feedback modal open at step 1

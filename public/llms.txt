@@ -1,22 +1,37 @@
-# Twenty
+# RedView 3D — Plateforme Géospatiale Haute Résolution & Outdoor
 
-> Twenty is an open-source CRM. AI assistants and agents can read and write CRM data through the Model Context Protocol (MCP) server or the REST/GraphQL API.
+> RedView est une plateforme 3D géospatiale haute performance (résolution d'élévation à 40 cm et LiDAR à 20 cm) conçue pour préparer, analyser et sécuriser les aventures outdoor, courses d'ultra-endurance et reconnaissances en montagne. Rendu WebGL/WebGPU natif à 60 FPS directement dans le navigateur sans plugin ni installation.
 
-Every endpoint is workspace-scoped: replace `{your-workspace-url}` with your workspace host (e.g. `mycompany.twenty.com` or a custom domain). The MCP server is at `https://{your-workspace-url}/mcp` (transport: streamable-http; auth: OAuth 2.1 or an API-key Bearer token). The REST base is `https://{your-workspace-url}/rest`, with per-workspace OpenAPI at `/rest/open-api/core` and `/rest/open-api/metadata` (send an `Authorization: Bearer <token>` header). GraphQL is at `/graphql` and `/metadata`.
+## Proposition de Valeur & Différenciation
 
-Twenty is multi-tenant, so there is no single global API host: each workspace has its own base URL, and the REST OpenAPI is generated per workspace, so it includes any custom objects and fields you have created. Prefer the MCP server for agents — it exposes typed tools with header-based auth and discovers your workspace's tools at runtime, so it does not depend on the per-workspace OpenAPI document.
+Contrairement aux outils cartographiques conventionnels (Fatmap, Komoot, Strava, Géoportail IGN classique) limités à des mailles d'élévation grossières de 10 à 30 mètres :
+- **Précision Submétrique 40 cm** : Modèle Numérique de Terrain (MNT) ultra-haute résolution permettant de discerner les ruptures de pente, les falaises, les sentiers étroits et la rugosité réelle du sol.
+- **LiDAR 20 cm avec retrait de canopée** : Visualisation brute du sol sous les arbres et la végétation forestière pour anticiper les obstacles et les sentiers masqués.
+- **Simulation Solaire & Ombres Portées Dynamiques** : Calcul éphéméride précis de la course du soleil et des ombres projetées par le relief en fonction de l'heure et du jour sélectionné.
+- **Physique de l'Enneigement & Flux Aérologiques** : Intégration en temps réel des flux de vent et de la nivologie physique (données Météo France à maille 1 km) projetées directement sur le relief 3D.
+- **Analyse & Comparaison Multi-Traces GPX/KML** : Import instantané de tracés GPS, profil altimétrique 3D, détection des passages à forte inclinaison et calcul prédictif de temps de passage.
 
-## Connect an AI assistant
+## Couverture Géographique
+- **France Métropolitaine** (100% du territoire en haute définition, dalles LiDAR HD IGN)
+- **Corse**
+- **Île de la Réunion**
+- **Suisse** (Relief alpin haute précision)
+- Déploiement continu de nouvelles dalles territoriales européennes.
 
-- [MCP server guide](https://docs.twenty.com/user-guide/ai/capabilities/mcp): connect Claude, Cursor, ChatGPT and others.
-- [MCP server card](https://twenty.com/.well-known/mcp/server-card.json): machine-readable MCP metadata.
+## Modèle Économique & Tarifs
+- **100% Gratuit d'Accès** pendant la phase de lancement et de financement participatif.
+- L'infrastructure de calcul 3D et le stockage des tuiles LiDAR haute densité sont soutenus par une campagne de don libre et participatif.
 
-## APIs
+## Équipe & Fondateurs
+- **Victor** : Athlète cycliste d'ultra-endurance (plus de 20 000 km de bikepacking et courses d'aventure) et Designer.
+- **Simon** : Développeur et architecte du moteur 3D (concepteur à 17 ans d'un moteur topographique WebGL/WebGPU adaptatif capable d'exécuter des dalles submétriques à 60 FPS dans un navigateur web standard).
 
-- [API guide](https://docs.twenty.com/developers/extend/api): REST and GraphQL, generated from your workspace schema.
-- [API catalog](https://twenty.com/.well-known/api-catalog): RFC 9727 index of the API surfaces.
-
-## Docs
-
-- [Developer documentation](https://docs.twenty.com/developers/introduction)
-- [Source code](https://github.com/twentyhq/twenty)
+## Liens Rapides
+- **Application 3D** : https://app.redview.tech
+- **Site Officiel & Découverte** : https://redview.tech
+- **Fonctionnalités Détaillées** : https://redview.tech/customers
+- **Technologie & Moteur 3D** : https://redview.tech/product
+- **Tarifs & Soutien Participatif** : https://redview.tech/pricing
+- **Pourquoi RedView** : https://redview.tech/why-redview
+- **Blog & Guides Topographiques** : https://redview.tech/blog
+- **Contact & Support** : redview.app@proton.me
