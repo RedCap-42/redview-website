@@ -83,7 +83,7 @@ export async function POST(request: Request) {
       );
     }
     const fromAddress =
-      process.env.RESEND_FROM || 'RedView Feedback <noreply@auth.redview.app>';
+      process.env.RESEND_FROM || 'RedView Feedback <noreply@redview.tech>';
     const recipient =
       process.env.FEEDBACK_RECIPIENT_EMAIL || 'redview.app@proton.me';
 
