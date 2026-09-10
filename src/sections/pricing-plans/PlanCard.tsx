@@ -198,6 +198,9 @@ export function PlanCard({
             href={cta.href}
             label={i18n._(cta.label)}
             variant={highlighted ? 'filled' : 'outlined'}
+            data-umami-event="pricing_select_tier"
+            data-umami-event-tier={tierId}
+            data-umami-event-billing={billing}
           />
         ) : (
           <TalkToUsButton

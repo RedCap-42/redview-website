@@ -1,5 +1,6 @@
 import { css } from '@linaria/core';
 import localFont from 'next/font/local';
+import Script from 'next/script';
 import { type ReactNode } from 'react';
 
 import { MESSAGES_BY_LOCALE } from '@/platform/i18n/messages-by-locale';
@@ -139,6 +140,17 @@ const LocaleLayout = async ({
             </CookieConsentProvider>
           </ContactCalModalRoot>
         </I18nProvider>
+        <Script
+          src="http://analytics.141.145.220.99.sslip.io/script.js"
+          data-website-id="73b66730-e760-4011-bf4e-0d84ac6c3230"
+          data-performance="true"
+          strategy="afterInteractive"
+        />
+        <Script
+          src="http://analytics.141.145.220.99.sslip.io/recorder.js"
+          data-website-id="73b66730-e760-4011-bf4e-0d84ac6c3230"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

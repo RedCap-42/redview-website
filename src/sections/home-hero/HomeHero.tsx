@@ -100,11 +100,13 @@ export function HomeHero() {
             <Button
               href={SITE_URLS.appWelcome}
               label={i18n._(msg`Explorer en 3D`)}
+              data-umami-event="hero_explore_3d"
             />
             <Button
               href="/customers"
               label={i18n._(msg`Fonctionnalités`)}
               variant="outlined"
+              data-umami-event="hero_features"
             />
           </CtaRow>
         </IntroStack>

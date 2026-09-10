@@ -1,7 +1,6 @@
 'use client';
 
 import { styled } from '@linaria/react';
-import { useState } from 'react';
 
 import { mediaUp, spacing } from '@/tokens';
 
@@ -45,7 +44,7 @@ const CardsGrid = styled.div`
 `;
 
 export function PricingBoard() {
-  const [billing, setBilling] = useState<PlansBillingPeriod>('yearly');
+  const billing: PlansBillingPeriod = 'yearly';
   const { hosting } = usePricingState();
 
   const maxBullets = Math.max(
@@ -57,7 +56,7 @@ export function PricingBoard() {
   return (
     <Board>
       <ControlsRow>
-        <BillingToggle billing={billing} onBillingChange={setBilling} />
+        <BillingToggle />
       </ControlsRow>
       <CardsGrid>
         <PlanCard

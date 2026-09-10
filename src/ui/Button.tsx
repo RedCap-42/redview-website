@@ -175,6 +175,7 @@ export type ButtonProps = {
   type?: 'button' | 'submit';
   variant?: ButtonVariant;
   onClick?: (event: MouseEvent<HTMLElement>) => void;
+  [key: `data-${string}`]: unknown;
 };
 
 export function Button({
@@ -186,6 +187,7 @@ export function Button({
   type = 'button',
   variant = 'filled',
   onClick,
+  ...rest
 }: ButtonProps) {
   const heightPx = BUTTON_HEIGHT_PX[size];
   // mailto:/tel: open in place (mail client, dialer) — forcing target=_blank
@@ -221,6 +223,7 @@ export function Button({
     className: buttonClassName,
     'data-size': size,
     'data-variant': variant,
+    ...rest,
   };
 
   if (href === undefined) {

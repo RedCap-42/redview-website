@@ -113,21 +113,21 @@ export const PLANS_DATA: Record<PlansTierId, PlansTier> = {
       cloud: {
         monthly: {
           featureBullets: FOUNDER_BULLETS,
-          price: { value: 5, prefix: '', valueSuffix: ' €', suffix: msg`/ par mois (soutien libre)` },
+          price: { value: 5, prefix: '', valueSuffix: ' €', suffix: msg`/ paiement unique · avantages à vie` },
         },
         yearly: {
           featureBullets: FOUNDER_BULLETS,
-          price: { value: 10, prefix: '', valueSuffix: ' €', suffix: msg`/ paiement unique · avantages à vie` },
+          price: { value: 5, prefix: '', valueSuffix: ' €', suffix: msg`/ paiement unique · avantages à vie` },
         },
       },
       selfHost: {
         monthly: {
           featureBullets: FOUNDER_BULLETS,
-          price: { value: 5, prefix: '', valueSuffix: ' €', suffix: msg`/ par mois (soutien libre)` },
+          price: { value: 5, prefix: '', valueSuffix: ' €', suffix: msg`/ paiement unique · avantages à vie` },
         },
         yearly: {
           featureBullets: FOUNDER_BULLETS,
-          price: { value: 10, prefix: '', valueSuffix: ' €', suffix: msg`/ paiement unique · avantages à vie` },
+          price: { value: 5, prefix: '', valueSuffix: ' €', suffix: msg`/ paiement unique · avantages à vie` },
         },
       },
     },
@@ -135,21 +135,21 @@ export const PLANS_DATA: Record<PlansTierId, PlansTier> = {
       cloud: {
         monthly: {
           href: SITE_URLS.appWelcome,
-          label: msg`Devenir Membre Fondateur (5€/mois)`,
+          label: msg`Devenir Membre Fondateur (5€)`,
         },
         yearly: {
           href: SITE_URLS.appWelcome,
-          label: msg`Devenir Membre Fondateur (10€)`,
+          label: msg`Devenir Membre Fondateur (5€)`,
         },
       },
       selfHost: {
         monthly: {
           href: SITE_URLS.appWelcome,
-          label: msg`Devenir Membre Fondateur (5€/mois)`,
+          label: msg`Devenir Membre Fondateur (5€)`,
         },
         yearly: {
           href: SITE_URLS.appWelcome,
-          label: msg`Devenir Membre Fondateur (10€)`,
+          label: msg`Devenir Membre Fondateur (5€)`,
         },
       },
     },
@@ -164,21 +164,21 @@ export const PLANS_DATA: Record<PlansTierId, PlansTier> = {
       cloud: {
         monthly: {
           featureBullets: PATRON_BULLETS,
-          price: { value: 15, prefix: 'dès ', valueSuffix: ' €', suffix: msg`/ par mois (soutien pro)` },
+          price: { value: 15, prefix: 'dès ', valueSuffix: ' €', suffix: msg`/ don libre de soutien` },
         },
         yearly: {
           featureBullets: PATRON_BULLETS,
-          price: { value: 30, prefix: 'dès ', valueSuffix: ' €', suffix: msg`/ don libre de soutien` },
+          price: { value: 15, prefix: 'dès ', valueSuffix: ' €', suffix: msg`/ don libre de soutien` },
         },
       },
       selfHost: {
         monthly: {
           featureBullets: PATRON_BULLETS,
-          price: { value: 15, prefix: 'dès ', valueSuffix: ' €', suffix: msg`/ par mois (soutien pro)` },
+          price: { value: 15, prefix: 'dès ', valueSuffix: ' €', suffix: msg`/ don libre de soutien` },
         },
         yearly: {
           featureBullets: PATRON_BULLETS,
-          price: { value: 30, prefix: 'dès ', valueSuffix: ' €', suffix: msg`/ don libre de soutien` },
+          price: { value: 15, prefix: 'dès ', valueSuffix: ' €', suffix: msg`/ don libre de soutien` },
         },
       },
     },
@@ -186,21 +186,21 @@ export const PLANS_DATA: Record<PlansTierId, PlansTier> = {
       cloud: {
         monthly: {
           href: SITE_URLS.appWelcome,
-          label: msg`Devenir Mécène (15€/mois)`,
+          label: msg`Devenir Mécène (dès 15€)`,
         },
         yearly: {
           href: SITE_URLS.appWelcome,
-          label: msg`Devenir Mécène (dès 30€)`,
+          label: msg`Devenir Mécène (dès 15€)`,
         },
       },
       selfHost: {
         monthly: {
           href: SITE_URLS.appWelcome,
-          label: msg`Devenir Mécène (15€/mois)`,
+          label: msg`Devenir Mécène (dès 15€)`,
         },
         yearly: {
           href: SITE_URLS.appWelcome,
-          label: msg`Devenir Mécène (dès 30€)`,
+          label: msg`Devenir Mécène (dès 15€)`,
         },
       },
     },

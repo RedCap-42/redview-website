@@ -15,8 +15,6 @@ import {
   spacing,
 } from '@/tokens';
 
-import { type PlansBillingPeriod } from './plans-data';
-
 const ToggleTrack = styled.div`
   align-items: center;
   background-color: ${color('black-5')};
@@ -75,36 +73,19 @@ const ToggleOption = styled.button`
   }
 `;
 
-export function BillingToggle({
-  billing,
-  onBillingChange,
-}: {
-  billing: PlansBillingPeriod;
-  onBillingChange: (billing: PlansBillingPeriod) => void;
-}) {
+export function BillingToggle() {
   const { i18n } = useLingui();
 
   return (
-    <ToggleTrack aria-label={i18n._(msg`Formule de soutien`)} role="radiogroup">
+    <ToggleTrack aria-label={i18n._(msg`Formule de soutien`)}>
       <ToggleOption
-        aria-checked={billing === 'yearly'}
-        data-active={billing === 'yearly' ? '' : undefined}
+        aria-checked="true"
+        data-active=""
         data-period="yearly"
-        onClick={() => onBillingChange('yearly')}
-        role="radio"
+        role="button"
         type="button"
       >
         {i18n._(msg`Pass Unique`)}
-      </ToggleOption>
-      <ToggleOption
-        aria-checked={billing === 'monthly'}
-        data-active={billing === 'monthly' ? '' : undefined}
-        data-period="monthly"
-        onClick={() => onBillingChange('monthly')}
-        role="radio"
-        type="button"
-      >
-        {i18n._(msg`Soutien Mensuel`)}
       </ToggleOption>
     </ToggleTrack>
   );
