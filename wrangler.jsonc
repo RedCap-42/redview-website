@@ -25,21 +25,17 @@
   },
   "env": {
     "dev": {
-      "name": "twenty-website-dev",
+      "name": "redview-website-dev",
       "routes": [
         {
-          "pattern": "twenty-main.com",
-          "custom_domain": true,
-        },
-        {
-          "pattern": "www.twenty-main.com",
+          "pattern": "dev.redview.tech",
           "custom_domain": true,
         },
       ],
       "r2_buckets": [
         {
           "binding": "NEXT_INC_CACHE_R2_BUCKET",
-          "bucket_name": "twenty-website-cache-dev",
+          "bucket_name": "redview-website-cache-dev",
         },
       ],
       // Self-reference so OpenNext can fire-and-forget background ISR
@@ -48,52 +44,44 @@
       "services": [
         {
           "binding": "WORKER_SELF_REFERENCE",
-          "service": "twenty-website-dev",
+          "service": "redview-website-dev",
         },
       ],
       // Skew-protection runtime inputs. The handler reads these to construct
       // `<old-version-id>-<CF_WORKER_NAME>.<CF_PREVIEW_DOMAIN>.workers.dev`
       // when routing a stale request to an older Worker version.
       "vars": {
-        "CF_WORKER_NAME": "twenty-website-dev",
-        // OpenNext appends `.workers.dev` itself when constructing the
-        // per-version preview URL — passing the full `twentyhq.workers.dev`
-        // here would yield `…twentyhq.workers.dev.workers.dev` and 404.
-        // See https://github.com/opennextjs/opennextjs-cloudflare/issues/811
-        "CF_PREVIEW_DOMAIN": "twentyhq",
+        "CF_WORKER_NAME": "redview-website-dev",
+        "CF_PREVIEW_DOMAIN": "redview",
       },
     },
     "prod": {
-      "name": "twenty-website-prod",
+      "name": "redview-website-prod",
       "routes": [
         {
-          "pattern": "twenty.com",
+          "pattern": "redview.tech",
           "custom_domain": true,
         },
         {
-          "pattern": "www.twenty.com",
+          "pattern": "www.redview.tech",
           "custom_domain": true,
         },
       ],
       "r2_buckets": [
         {
           "binding": "NEXT_INC_CACHE_R2_BUCKET",
-          "bucket_name": "twenty-website-cache-prod",
+          "bucket_name": "redview-website-cache-prod",
         },
       ],
       "services": [
         {
           "binding": "WORKER_SELF_REFERENCE",
-          "service": "twenty-website-prod",
+          "service": "redview-website-prod",
         },
       ],
       "vars": {
-        "CF_WORKER_NAME": "twenty-website-prod",
-        // OpenNext appends `.workers.dev` itself when constructing the
-        // per-version preview URL — passing the full `twentyhq.workers.dev`
-        // here would yield `…twentyhq.workers.dev.workers.dev` and 404.
-        // See https://github.com/opennextjs/opennextjs-cloudflare/issues/811
-        "CF_PREVIEW_DOMAIN": "twentyhq",
+        "CF_WORKER_NAME": "redview-website-prod",
+        "CF_PREVIEW_DOMAIN": "redview",
       },
     },
   },

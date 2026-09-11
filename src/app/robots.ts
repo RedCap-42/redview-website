@@ -5,6 +5,7 @@ import { getSiteUrl } from '@/platform/seo';
 
 const ALWAYS_DISALLOW: readonly string[] = [
   '/api/',
+  '/apps',
   '/compare-pricing/',
   '/enterprise/activate',
   '/halftone',

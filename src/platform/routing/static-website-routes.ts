@@ -25,9 +25,10 @@ export const STATIC_WEBSITE_ROUTES: readonly WebsiteRoute[] = [
     changeFrequency: 'weekly',
     description: msg`Découvrez et installez les extensions et intégrations RedView en un clic.`,
     id: 'apps',
-    indexed: true,
+    indexed: false,
     path: '/apps',
-    priority: 0.8,
+    priority: 0.1,
+    robotsDisallow: true,
     title: msg`Applications & Intégrations RedView`,
   },
   {
