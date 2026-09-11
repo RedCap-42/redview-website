@@ -16,8 +16,13 @@ import {
 } from '@/sections/cookie-consent';
 import { I18nProvider } from '@/platform/i18n/I18nProvider';
 import { resolveLocaleParam } from '@/platform/i18n/resolve-locale-param';
+import { getSiteUrl } from '@/platform/seo';
 import { WEBSITE_LOCALE_LIST } from '@/platform/i18n/website-locale-list';
 import { color, fontFamily, tokenCssVariables } from '@/tokens';
+
+export const metadata = {
+  metadataBase: new URL(getSiteUrl()),
+};
 
 // Host Grotesk and Azeret Mono are variable fonts, declared over their full
 // wght axis so the browser interpolates every weight the site asks for.
@@ -127,6 +132,9 @@ const LocaleLayout = async ({
 
   return (
     <html lang={locale} suppressHydrationWarning>
+      <head>
+        <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLMs.txt" />
+      </head>
       <body
         className={`${tokenCssVariables} ${globalStyles} ${hostGrotesk.variable} ${aleo.variable} ${azeretMono.variable} ${vt323.variable} ${inter.variable}`}
         suppressHydrationWarning

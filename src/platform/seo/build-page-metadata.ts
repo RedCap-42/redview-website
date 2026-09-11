@@ -12,7 +12,7 @@ import { getSiteUrl } from './get-site-url';
 
 const SITE_NAME = 'RedView';
 const TWITTER_HANDLE = '@RedView3D';
-const DEFAULT_OG_IMAGE_PATH = '/images/og/default.png';
+const DEFAULT_OG_IMAGE_PATH = '/images/og/redview-preview.png?v=2';
 
 type MetadataText = MessageDescriptor | string;
 
@@ -57,10 +57,37 @@ export function buildPageMetadata({
 }: BuildPageMetadataInput): Metadata {
   const canonical = localizePath(locale, path);
   const i18n = createI18nInstance(locale);
-  const resolvedTitle = typeof title === 'string' ? title : i18n._(title);
-  const resolvedDescription =
+  let resolvedTitle = typeof title === 'string' ? title : i18n._(title);
+  if (typeof title === 'object' && title !== null) {
+    if (!resolvedTitle || resolvedTitle === title.id) {
+      resolvedTitle = (title as { message?: string }).message || 'RedView';
+    }
+  }
+  if (!resolvedTitle || (resolvedTitle.length <= 6 && !resolvedTitle.toLowerCase().includes('redview'))) {
+    resolvedTitle = 'RedView — Cartographie 3D Haute Résolution & LiDAR Outdoor';
+  }
+
+  let resolvedDescription =
     typeof description === 'string' ? description : i18n._(description);
-  const ogImages = [{ url: ogImagePath }];
+  if (typeof description === 'object' && description !== null) {
+    if (!resolvedDescription || resolvedDescription === description.id) {
+      resolvedDescription = (description as { message?: string }).message || '';
+    }
+  }
+  const siteUrl = getSiteUrl();
+  const absoluteOgImageUrl = ogImagePath.startsWith('http')
+    ? ogImagePath
+    : `${siteUrl}${ogImagePath.startsWith('/') ? ogImagePath : `/${ogImagePath}`}`;
+
+  const ogImages = [
+    {
+      url: absoluteOgImageUrl,
+      width: 1200,
+      height: 630,
+      type: 'image/png',
+      alt: resolvedTitle,
+    },
+  ];
 
   return {
     metadataBase: new URL(getSiteUrl()),
@@ -68,11 +95,12 @@ export function buildPageMetadata({
     description: resolvedDescription,
     keywords: [
       'RedView',
+      'RedView 3D',
       'Cartographie 3D',
       'LiDAR 20cm',
       'Relief 40cm',
       'Traces GPX',
-      'Outdoor',
+      'Outdoor 3D map',
       'Bikepacking',
       'Ultra endurance',
       'Trail running',
@@ -81,6 +109,8 @@ export function buildPageMetadata({
       'MNT IGN',
       'Simulation ensoleillement',
       'Fatmap alternative',
+      'Climb-Seeker',
+      'Visualisateur 3D WebGL',
     ],
     authors: [
       { name: 'RedView' },
@@ -129,7 +159,7 @@ export function buildPageMetadata({
       description: resolvedDescription,
       site: TWITTER_HANDLE,
       creator: TWITTER_HANDLE,
-      images: ogImages.map((image) => image.url),
+      images: [absoluteOgImageUrl],
     },
   };
 }

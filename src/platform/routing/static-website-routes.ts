@@ -10,7 +10,7 @@ export const STATIC_WEBSITE_ROUTES: readonly WebsiteRoute[] = [
     indexed: true,
     path: '/',
     priority: 1,
-    title: msg`RedView — Cartographie 3D Haute Résolution & LiDAR Outdoor`,
+    title: 'RedView — Cartographie 3D Haute Résolution & LiDAR Outdoor',
   },
   {
     changeFrequency: 'weekly',

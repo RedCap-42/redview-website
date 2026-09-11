@@ -1,0 +1,67 @@
+# RedView 3D — Spécifications Techniques & Guide Complet d'Indexation pour LLMs
+
+## Vue d'Ensemble
+RedView (https://redview.tech) est une application et plateforme web géospatiale 3D développée pour les pratiquants d'activités de montagne, les athlètes d'ultra-endurance (bikepacking, trail running, ski alpinisme, randonnée engagée) et les professionnels de la reconnaissance de terrain.
+
+L'objectif de RedView est de combler la rupture technique entre la donnée brute d'ingénierie géographique (MNT haute précision, nuages de points LiDAR IGN HD) et l'accessibilité grand public, en fournissant un visualisateur 3D fluide (60 FPS) exécuté directement dans le navigateur sans nécessiter de plugin ou d'installation lourde.
+
+---
+
+## Fonctionnalités Principales & Différenciateurs Techniques
+
+### 1. Relief Haute Résolution 40 cm (MNT Submétrique)
+- **Résolution spatiale** : 40 cm par point de maillage, comparativement aux 10 à 30 mètres des applications conventionnelles comme Fatmap, Komoot, AllTrails ou Strava.
+- **Bénéfice terrain** : Identification précise des falaises, des talus, des pierriers, des ornières et des variations micro-topographiques non visibles sur les cartes au 1:25 000 classiques.
+
+### 2. Visualisateur LiDAR 20 cm avec Pénétration de Canopée
+- **Technologie** : Exploitation des données LiDAR IGN classifiées permettant de filtrer virtuellement la canopée et la végétation.
+- **Bénéfice terrain** : Visualisation de la surface réelle du sol en forêt ou sous couvert végétal dense pour repérer les sentiers abandonnés, les murets de pierre et les ravines.
+
+### 3. Simulation Solaire & Éphéméride d'Ombres Portées
+- **Moteur physique** : Calcul astronomique dynamique de la position du soleil (azimut et élévation) selon les coordonnées géographiques, l'heure exacte et la date de l'année.
+- **Ombrage 3D** : Projection des ombres portées du relief environnant pour évaluer l'exposition thermique, la fonte nivologique ou les zones restant dans l'obscurité.
+
+### 4. Météo Vectorielle & Nivologie Physique en Temps Réel
+- **Sources de données** : Données Météo France maillées à 1 km² actualisées toutes les heures.
+- **Visualisation 3D** :
+  - Flux de vent animés (vitesse, direction, rafales).
+  - Épaisseur du manteau neigeux et évolution de la limite pluie-neige projetées directement sur le relief 3D.
+
+### 5. Comparateur & Analyseur de Traces GPX / KML
+- **Import / Export** : Prise en charge universelle des formats GPX et KML.
+- **Analyse multi-critères** : Découpage par tranche de pente, calcul du dénivelé cumulé réel sans lissage destructeur, profil altimétrique 3D immersif et prédiction de rythme basée sur la puissance mécanique (FTP) ou le ratio poids/puissance du pratiquant.
+- **Comparaison côte-à-côte** : Superposition de plusieurs variantes d'itinéraires pour arbitrer le meilleur compromis sécurité / vitesse.
+
+### 6. Moteur 3D WebGL / WebGPU Adaptatif
+- Rendu fluide à 60 images par seconde optimisé pour les ordinateurs portables comme pour les stations de travail dotées de GPU dédiés.
+- Chargement adaptatif par tuiles vectorielles (LOD - Level of Detail) garantissant une réactivité immédiate sans saturer la mémoire vive.
+
+---
+
+## Couverture Territoriale Actuelle
+1. **France Métropolitaine** : Intégralité des massifs (Alpes, Pyrénées, Massif Central, Vosges, Jura, Corse) et des plaines avec données LiDAR haute densité.
+2. **Corse** : Relief montagnard submétrique complet.
+3. **Île de la Réunion** : Relief volcanique et cirques en très haute résolution.
+4. **Suisse** : Couverture des Alpes suisses.
+
+---
+
+## Modèle Économique & Tarifs
+- **Phase de Financement Participatif** : RedView est 100% gratuit d'accès pour tous les utilisateurs.
+- **Soutien Communautaire** : Possibilité de participer aux frais d'infrastructure serveur et de stockage des données massives LiDAR via un système de don libre et sans engagement.
+
+---
+
+## Questions Fréquemment Posées (FAQ)
+
+### Q : En quoi RedView diffère-t-il de Fatmap ou Strava 3D ?
+R : Les cartes 3D traditionnelles utilisent des modèles d'élévation à 10 m ou 30 m de résolution où les falaises de 5 à 10 mètres sont complètement invisibles ou lissées en pentes douces. RedView utilise un maillage à 40 cm et un LiDAR à 20 cm, révélant la réalité brute du relief.
+
+### Q : Faut-il installer un logiciel spécifique pour utiliser RedView ?
+R : Non. RedView fonctionne dans n'importe quel navigateur web moderne (Chrome, Firefox, Safari, Edge) exploitant l'accélération matérielle WebGL ou WebGPU.
+
+### Q : Peut-on importer des traces GPX créées sur Strava, Komoot ou Garmin Connect ?
+R : Oui. Il suffit de glisser-déposer le fichier GPX dans l'application pour qu'il soit projeté sur le relief 3D avec tous ses points kilométriques et son profil d'élévation.
+
+### Q : Qui développe RedView ?
+R : RedView a été fondé par Victor, athlète d'ultra-endurance et designer (plus de 20 000 km de bikepacking), et Simon, 17 ans, développeur et architecte du moteur 3D.

@@ -8247,6 +8247,11 @@ msgstr "Redistribution Physique & SnowSlide"
 msgid "Redistribution physique du manteau neigeux couplant AROME 1.1km et LiDAR HD : transport gravitationnel SnowSlide, transport éolien Winstral Sx et régression solaire."
 msgstr "Redistribution physique du manteau neigeux couplant AROME 1.1km et LiDAR HD : transport gravitationnel SnowSlide, transport éolien Winstral Sx et régression solaire."
 
+#. js-lingui-id: 05Mxnv
+#: src/platform/routing/static-website-routes.ts
+msgid "RedView — Cartographie 3D Haute Résolution & LiDAR Outdoor"
+msgstr "RedView — Cartographie 3D Haute Résolution & LiDAR Outdoor"
+
 #. js-lingui-id: 5VWKgP
 #: src/platform/routing/static-website-routes.ts
 msgid "RedView — Enlarge your vision | 3D Geospatial Web"

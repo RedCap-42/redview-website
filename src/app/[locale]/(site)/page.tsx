@@ -4,6 +4,7 @@ import {
   type LocaleRouteParams,
 } from '@/platform/i18n/get-route-i18n';
 import {
+  buildFaqPageJsonLd,
   buildOrganizationJsonLd,
   buildRouteMetadata,
   buildSoftwareApplicationJsonLd,
@@ -11,6 +12,7 @@ import {
   JsonLd,
 } from '@/platform/seo';
 import { Faq } from '@/sections/faq';
+import { FAQ_QUESTIONS } from '@/sections/faq/faq.data';
 import { FeatureCards } from '@/sections/feature-cards';
 import { Helped } from '@/sections/helped';
 import { HomeHero } from '@/sections/home-hero';
@@ -27,7 +29,7 @@ export default async function HomePage({
 }: {
   params: Promise<LocaleRouteParams>;
 }) {
-  const [, communityStats] = await Promise.all([
+  const [i18n, communityStats] = await Promise.all([
     getRouteI18n(params),
     getCommunityStats(),
   ]);
@@ -37,6 +39,7 @@ export default async function HomePage({
       <JsonLd data={buildOrganizationJsonLd()} />
       <JsonLd data={buildSoftwareApplicationJsonLd()} />
       <JsonLd data={buildWebSiteJsonLd()} />
+      <JsonLd data={buildFaqPageJsonLd(i18n, FAQ_QUESTIONS)} />
       <Menu communityStats={communityStats} scheme="dark" />
       <main>
         <HomeHero />

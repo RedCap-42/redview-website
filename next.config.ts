@@ -96,26 +96,14 @@ const nextConfig: LinariaConfig = {
       // when the parameter matches empty against an absolute destination.
       {
         source: '/',
-        has: [{ type: 'host', value: 'www.twenty.com' }],
-        destination: 'https://twenty.com/',
+        has: [{ type: 'host', value: 'www.redview.tech' }],
+        destination: 'https://redview.tech/',
         permanent: true,
       },
       {
         source: '/:path*',
-        has: [{ type: 'host', value: 'www.twenty.com' }],
-        destination: 'https://twenty.com/:path*',
-        permanent: true,
-      },
-      {
-        source: '/',
-        has: [{ type: 'host', value: 'www.twenty-main.com' }],
-        destination: 'https://twenty-main.com/',
-        permanent: true,
-      },
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'www.twenty-main.com' }],
-        destination: 'https://twenty-main.com/:path*',
+        has: [{ type: 'host', value: 'www.redview.tech' }],
+        destination: 'https://redview.tech/:path*',
         permanent: true,
       },
       // Strip the source-locale prefix: /fr/foo → /foo (301).
@@ -160,48 +148,33 @@ const nextConfig: LinariaConfig = {
         permanent: true,
       },
       {
+        source: '/user-guide/:slug*',
+        destination: '/customers',
+        permanent: true,
+      },
+      {
         source: '/user-guide',
-        destination: 'https://docs.twenty.com/user-guide/introduction',
+        destination: '/customers',
         permanent: true,
       },
       {
-        source: '/user-guide/section/:folder/:slug*',
-        destination: 'https://docs.twenty.com/user-guide/:folder/:slug*',
-        permanent: true,
-      },
-      {
-        source: '/user-guide/:folder/:slug*',
-        destination: 'https://docs.twenty.com/user-guide/:folder/:slug*',
+        source: '/developers/:slug*',
+        destination: '/product',
         permanent: true,
       },
       {
         source: '/developers',
-        destination: 'https://docs.twenty.com/developers/introduction',
+        destination: '/product',
         permanent: true,
       },
       {
-        source: '/developers/section/:folder/:slug*',
-        destination: 'https://docs.twenty.com/developers/:folder/:slug*',
-        permanent: true,
-      },
-      {
-        source: '/developers/:folder/:slug*',
-        destination: 'https://docs.twenty.com/developers/:folder/:slug*',
+        source: '/twenty-ui/:slug*',
+        destination: '/product',
         permanent: true,
       },
       {
         source: '/twenty-ui',
-        destination: 'https://docs.twenty.com/twenty-ui/introduction',
-        permanent: true,
-      },
-      {
-        source: '/twenty-ui/section/:folder/:slug*',
-        destination: 'https://docs.twenty.com/twenty-ui/:folder/:slug*',
-        permanent: true,
-      },
-      {
-        source: '/twenty-ui/:folder/:slug*',
-        destination: 'https://docs.twenty.com/twenty-ui/:folder/:slug*',
+        destination: '/product',
         permanent: true,
       },
       {

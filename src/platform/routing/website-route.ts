@@ -37,7 +37,7 @@ export type SitemapChangeFrequency =
 // record, so a page's SEO surface lives in one place.
 export type WebsiteRoute = {
   changeFrequency: SitemapChangeFrequency;
-  description: MessageDescriptor;
+  description: MessageDescriptor | string;
   id: WebsiteRouteId;
   indexed: boolean;
   localeMode?: 'all' | 'source';
@@ -45,7 +45,7 @@ export type WebsiteRoute = {
   path: string;
   priority: number;
   robotsDisallow?: boolean;
-  title: MessageDescriptor;
+  title: MessageDescriptor | string;
 };
 
 // One slug under a dynamic family, produced by the family's enumerator from

@@ -1,5 +1,6 @@
 export { buildBreadcrumbListJsonLd } from './build-breadcrumb-list-json-ld';
 export { buildFamilyEntryMetadata } from './build-family-entry-metadata';
+export { buildFaqPageJsonLd } from './build-faq-page-json-ld';
 export { buildOrganizationJsonLd } from './build-organization-json-ld';
 export {
   buildPageMetadata,
