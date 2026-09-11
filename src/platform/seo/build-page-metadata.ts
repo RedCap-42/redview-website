@@ -161,5 +161,8 @@ export function buildPageMetadata({
       creator: TWITTER_HANDLE,
       images: [absoluteOgImageUrl],
     },
+    verification: {
+      google: '-PvqHT0f2bilm7Y-u4EBDLbOXepktqysHtsZZzz6SvA',
+    },
   };
 }

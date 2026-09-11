@@ -22,6 +22,9 @@ import { color, fontFamily, tokenCssVariables } from '@/tokens';
 
 export const metadata = {
   metadataBase: new URL(getSiteUrl()),
+  verification: {
+    google: '-PvqHT0f2bilm7Y-u4EBDLbOXepktqysHtsZZzz6SvA',
+  },
 };
 
 // Host Grotesk and Azeret Mono are variable fonts, declared over their full
@@ -133,6 +136,7 @@ const LocaleLayout = async ({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
+        <meta name="google-site-verification" content="-PvqHT0f2bilm7Y-u4EBDLbOXepktqysHtsZZzz6SvA" />
         <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLMs.txt" />
       </head>
       <body
