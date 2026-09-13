@@ -7,7 +7,6 @@ const ALWAYS_DISALLOW: readonly string[] = [
   '/api/',
   '/apps',
   '/apps/',
-  '/enterprise/activate',
   '/halftone',
 ];
 

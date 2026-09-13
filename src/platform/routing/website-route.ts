@@ -6,7 +6,6 @@ export type WebsiteRouteId =
   | 'blog'
   | 'cookiePolicy'
   | 'customers'
-  | 'enterpriseActivate'
   | 'halftone'
   | 'home'
   | 'legalNotice'

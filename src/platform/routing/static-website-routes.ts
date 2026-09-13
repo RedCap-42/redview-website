@@ -158,15 +158,6 @@ export const STATIC_WEBSITE_ROUTES: readonly WebsiteRoute[] = [
     title: msg`Politique de Remboursement & Rétractation — RedView`,
   },
   {
-    changeFrequency: 'yearly',
-    description: msg`Activez votre licence RedView Enterprise et configurez votre instance.`,
-    id: 'enterpriseActivate',
-    indexed: false,
-    path: '/enterprise/activate',
-    priority: 0.3,
-    title: msg`Enterprise Activation | RedView`,
-  },
-  {
     changeFrequency: 'monthly',
     description: msg`Générateur de trame halftone interactif RedView.`,
     id: 'halftone',

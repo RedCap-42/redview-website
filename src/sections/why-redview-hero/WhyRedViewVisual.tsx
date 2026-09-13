@@ -45,7 +45,7 @@ export function WhyRedViewVisual() {
           fill
           priority
           sizes="100vw"
-          src="/images/why-twenty/hero/background.webp"
+          src="/images/why-redview/hero/background.webp"
         />
       </BackgroundLayer>
       <ForegroundLayer>
