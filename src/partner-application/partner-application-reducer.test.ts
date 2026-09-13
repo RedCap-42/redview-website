@@ -32,7 +32,7 @@ describe('partnerApplicationReducer', () => {
     expect(INITIAL_PARTNER_APPLICATION_STATE.stepIndex).toBe(0);
     expect(INITIAL_PARTNER_APPLICATION_STATE.name).toBe('');
     expect(INITIAL_PARTNER_APPLICATION_STATE.partnerScope).toEqual([]);
-    expect(INITIAL_PARTNER_APPLICATION_STATE.twentyExperience).toEqual([]);
+    expect(INITIAL_PARTNER_APPLICATION_STATE.terrainExperience).toEqual([]);
   });
 
   it('SET_FIELD updates the field and clears any prior error for it', () => {
@@ -67,12 +67,12 @@ describe('partnerApplicationReducer', () => {
       type: 'TOGGLE_EXPERIENCE',
       value: 'CUSTOM_APPS',
     });
-    expect(added.twentyExperience).toEqual(['CUSTOM_APPS']);
+    expect(added.terrainExperience).toEqual(['CUSTOM_APPS']);
     const removed = partnerApplicationReducer(added, {
       type: 'TOGGLE_EXPERIENCE',
       value: 'CUSTOM_APPS',
     });
-    expect(removed.twentyExperience).toEqual([]);
+    expect(removed.terrainExperience).toEqual([]);
   });
 
   it('GO_NEXT on Identity with missing required fields fills errors and stays', () => {
@@ -165,28 +165,28 @@ describe('partnerApplicationReducer', () => {
       type: 'GO_NEXT',
     });
     expect(blocked.stepIndex).toBe(3);
-    expect(blocked.fieldErrors.twentyExperience).toBe('required');
-    expect(blocked.fieldErrors.twentyExperienceNotes).toBe('required');
-    expect(blocked.fieldErrors.twentyExperienceProofLink).toBe('required');
+    expect(blocked.fieldErrors.terrainExperience).toBe('required');
+    expect(blocked.fieldErrors.terrainExperienceNotes).toBe('required');
+    expect(blocked.fieldErrors.terrainExperienceProofLink).toBe('required');
 
     const shortNotes = partnerApplicationReducer(
       {
         ...onExperience,
-        twentyExperience: ['WORKFLOWS'],
-        twentyExperienceNotes: 'Too short.',
-        twentyExperienceProofLink: 'https://www.loom.com/share/example',
+        terrainExperience: ['WORKFLOWS'],
+        terrainExperienceNotes: 'Too short.',
+        terrainExperienceProofLink: 'https://www.loom.com/share/example',
       },
       { type: 'GO_NEXT' },
     );
     expect(shortNotes.stepIndex).toBe(3);
-    expect(shortNotes.fieldErrors.twentyExperienceNotes).toBe('too_short');
+    expect(shortNotes.fieldErrors.terrainExperienceNotes).toBe('too_short');
 
     const ok = partnerApplicationReducer(
       {
         ...onExperience,
-        twentyExperience: ['WORKFLOWS'],
-        twentyExperienceNotes: validExperienceNotes,
-        twentyExperienceProofLink: 'https://www.loom.com/share/example',
+        terrainExperience: ['WORKFLOWS'],
+        terrainExperienceNotes: validExperienceNotes,
+        terrainExperienceProofLink: 'https://www.loom.com/share/example',
       },
       { type: 'GO_NEXT' },
     );

@@ -1,7 +1,7 @@
 import { PARTNER_APPLICATION_COPY } from './partner-application-copy';
 
 describe('partner application proof hint', () => {
-  const hint = PARTNER_APPLICATION_COPY.fields.twentyExperienceProofLinkHint.id;
+  const hint = PARTNER_APPLICATION_COPY.fields.terrainExperienceProofLinkHint.id;
 
   it('asks first for a live instance or a YouTube link', () => {
     expect(hint).toContain('live Twenty instance');

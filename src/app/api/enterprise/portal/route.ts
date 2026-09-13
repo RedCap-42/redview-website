@@ -58,10 +58,21 @@ export async function POST(request: Request) {
       );
     }
 
-    const fullReturnUrl =
-      typeof returnUrl === 'string'
-        ? `${frontendUrl}${returnUrl}`
-        : frontendUrl;
+    let fullReturnUrl = frontendUrl;
+    if (typeof returnUrl === 'string' && returnUrl.trim()) {
+      const candidate = returnUrl.trim();
+      // Ensure candidate is a safe relative path: starts with / and not //, does not contain @ or \
+      if (
+        candidate.startsWith('/') &&
+        !candidate.startsWith('//') &&
+        !candidate.includes('@') &&
+        !candidate.includes('\\')
+      ) {
+        fullReturnUrl = `${frontendUrl}${candidate}`;
+      } else if (candidate.startsWith(frontendUrl) && !candidate.slice(frontendUrl.length).includes('@')) {
+        fullReturnUrl = candidate;
+      }
+    }
 
     const session = await stripe.billingPortal.sessions.create({
       customer: customerId,

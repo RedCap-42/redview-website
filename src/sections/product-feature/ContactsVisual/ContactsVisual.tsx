@@ -239,7 +239,7 @@ export function ContactsVisual({ active: _active }: { active: boolean }) {
   return (
     <Root>
       <ViewHeader>
-        <ViewTitle>All Companies</ViewTitle>
+        <ViewTitle>Toutes les traces</ViewTitle>
         <ViewCount>· 9</ViewCount>
       </ViewHeader>
 

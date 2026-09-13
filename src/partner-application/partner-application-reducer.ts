@@ -43,13 +43,13 @@ export function partnerApplicationReducer(
       return { ...state, languages: next };
     }
     case 'TOGGLE_EXPERIENCE': {
-      const next = state.twentyExperience.includes(action.value)
-        ? state.twentyExperience.filter((value) => value !== action.value)
-        : [...state.twentyExperience, action.value];
+      const next = state.terrainExperience.includes(action.value)
+        ? state.terrainExperience.filter((value) => value !== action.value)
+        : [...state.terrainExperience, action.value];
       return {
         ...state,
-        twentyExperience: next,
-        fieldErrors: dropError(state.fieldErrors, 'twentyExperience'),
+        terrainExperience: next,
+        fieldErrors: dropError(state.fieldErrors, 'terrainExperience'),
       };
     }
     case 'SET_SKILLS':

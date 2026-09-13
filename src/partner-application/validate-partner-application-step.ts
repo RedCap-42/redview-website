@@ -2,7 +2,7 @@ import {
   PARTNER_APPLICATION_STEP_IDS,
   type PartnerApplicationStepId,
 } from './data/partner-application-step-ids';
-import { TWENTY_EXPERIENCE_NOTES_MIN_LENGTH } from './data/twenty-experience-notes-min-length';
+import { TERRAIN_EXPERIENCE_NOTES_MIN_LENGTH } from './data/terrain-experience-notes-min-length';
 import { emailFieldSchema } from './email-field-schema';
 import { httpUrlFieldSchema } from './http-url-field-schema';
 import { nonNegativeAmountFieldSchema } from './non-negative-amount-field-schema';
@@ -16,9 +16,9 @@ const STEP_REQUIRED_FIELDS: Record<
   profile: ['country', 'typeOfTeam', 'city'],
   expertise: ['partnerScope'],
   experience: [
-    'twentyExperience',
-    'twentyExperienceNotes',
-    'twentyExperienceProofLink',
+    'terrainExperience',
+    'terrainExperienceNotes',
+    'terrainExperienceProofLink',
   ],
   commercials: ['hourlyRate', 'projectBudgetMin'],
 };
@@ -35,7 +35,7 @@ type FieldFormatCheck = {
     | 'website'
     | 'linkedin'
     | 'calendarLink'
-    | 'twentyExperienceProofLink'
+    | 'terrainExperienceProofLink'
     | 'hourlyRate'
     | 'projectBudgetMin';
   schema:
@@ -57,7 +57,7 @@ const STEP_FORMAT_CHECKS: Partial<
   ],
   experience: [
     {
-      field: 'twentyExperienceProofLink',
+      field: 'terrainExperienceProofLink',
       schema: httpUrlFieldSchema,
       errorCode: 'invalid_url',
     },
@@ -101,11 +101,11 @@ export function validatePartnerApplicationStep(
 
   if (
     stepId === 'experience' &&
-    errors.twentyExperienceNotes === undefined &&
-    state.twentyExperienceNotes.trim().length <
-      TWENTY_EXPERIENCE_NOTES_MIN_LENGTH
+    errors.terrainExperienceNotes === undefined &&
+    state.terrainExperienceNotes.trim().length <
+      TERRAIN_EXPERIENCE_NOTES_MIN_LENGTH
   ) {
-    errors.twentyExperienceNotes = 'too_short';
+    errors.terrainExperienceNotes = 'too_short';
   }
 
   for (const check of STEP_FORMAT_CHECKS[stepId] ?? []) {

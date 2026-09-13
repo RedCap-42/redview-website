@@ -52,6 +52,15 @@ export async function GET(request: Request) {
       );
     }
 
+    // Protection anti-rejeu : fenêtre d'activation limitée à 24 heures post-checkout
+    const sessionAgeSeconds = Math.floor(Date.now() / 1000) - session.created;
+    if (sessionAgeSeconds > 24 * 60 * 60) {
+      return NextResponse.json(
+        { error: 'Activation window expired for this checkout session. Please contact support.' },
+        { status: 410 },
+      );
+    }
+
     const subscription = session.subscription;
 
     if (!subscription || typeof subscription === 'string') {

@@ -11,65 +11,44 @@ import {
   fontSize,
   mediaUp,
   radius,
-  REDUCED_MOTION,
   spacing,
 } from '@/tokens';
 
-const ToggleTrack = styled.div`
+const BadgeTrack = styled.div`
   align-items: center;
-  background-color: ${color('black-5')};
+  background-color: ${color('white')};
+  border: 1px solid ${color('black-10')};
   border-radius: ${radius(20)};
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   display: inline-flex;
+  gap: ${spacing(1.5)};
   margin-inline: auto;
   max-width: 100%;
-  padding: 3px;
+  padding: 6px 14px;
   position: relative;
 `;
 
-const ToggleOption = styled.button`
-  align-items: center;
-  background-color: transparent;
-  border: none;
-  border-radius: ${radius(20)};
-  color: ${color('black-60')};
-  cursor: pointer;
-  display: inline-flex;
+const StatusDot = styled.span`
+  background-color: ${color('blue')};
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+  height: 6px;
+  width: 6px;
+`;
+
+const BadgeText = styled.span`
+  color: ${color('black-70')};
   font-family: ${fontFamily('sans')};
   font-size: ${fontSize(3)};
   font-weight: ${FONT_WEIGHT.medium};
-  height: 32px;
-  justify-content: center;
+  letter-spacing: 0.01em;
   line-height: 1;
-  padding-inline: ${spacing(3.5)};
-  position: relative;
-  text-align: center;
-  transition:
-    background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-    color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   user-select: none;
   white-space: nowrap;
 
   ${mediaUp('md')} {
     font-size: ${fontSize(3.5)};
-    height: 34px;
-    padding-inline: ${spacing(4.5)};
-  }
-
-  &[data-active] {
-    background-color: ${color('white')};
-    box-shadow:
-      0 1px 3px rgba(0, 0, 0, 0.08),
-      0 1px 2px rgba(0, 0, 0, 0.04);
-    color: ${color('black')};
-  }
-
-  &:not([data-active]):hover {
-    color: ${color('black')};
-  }
-
-  ${REDUCED_MOTION} {
-    transition: none;
   }
 `;
 
@@ -77,16 +56,9 @@ export function BillingToggle() {
   const { i18n } = useLingui();
 
   return (
-    <ToggleTrack aria-label={i18n._(msg`Formule de soutien`)}>
-      <ToggleOption
-        aria-checked="true"
-        data-active=""
-        data-period="yearly"
-        role="button"
-        type="button"
-      >
-        {i18n._(msg`Pass Unique`)}
-      </ToggleOption>
-    </ToggleTrack>
+    <BadgeTrack aria-label={i18n._(msg`Formule de soutien`)}>
+      <StatusDot />
+      <BadgeText>{i18n._(msg`Offre Pionniers Bêta · Paiement unique sans abonnement`)}</BadgeText>
+    </BadgeTrack>
   );
 }

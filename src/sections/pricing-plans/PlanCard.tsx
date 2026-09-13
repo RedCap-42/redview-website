@@ -1,5 +1,6 @@
 'use client';
 
+import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
@@ -7,7 +8,15 @@ import NextImage from 'next/image';
 
 import { TalkToUsButton } from '@/contact-cal';
 import { useAnimatedNumber } from '@/platform/motion';
-import { color, mediaUp, radius, semanticColor, spacing } from '@/tokens';
+import {
+  color,
+  FONT_WEIGHT,
+  fontFamily,
+  mediaUp,
+  radius,
+  semanticColor,
+  spacing,
+} from '@/tokens';
 import { Body, Button, Heading } from '@/ui';
 
 import {
@@ -19,6 +28,27 @@ import { PlanFeatureList } from './PlanFeatureList';
 import { type PlansHostingMode } from '@/pricing-state';
 import { useFeatureTransition } from './use-feature-transition';
 
+const HighlightTag = styled.div`
+  align-items: center;
+  background-color: ${color('white')};
+  border: 1px solid ${color('blue')};
+  border-radius: ${radius(20)};
+  color: ${color('blue')};
+  display: inline-flex;
+  font-family: ${fontFamily('sans')};
+  font-size: 10px;
+  font-weight: ${FONT_WEIGHT.medium};
+  letter-spacing: 0.06em;
+  line-height: 1;
+  padding: 3px 8px;
+  position: absolute;
+  top: -10px;
+  left: ${spacing(4)};
+  text-transform: uppercase;
+  width: fit-content;
+  z-index: 2;
+`;
+
 const CardShell = styled.div<{ $highlighted?: boolean }>`
   background-color: ${color('white')};
   border: 1px solid ${({ $highlighted }) => ($highlighted ? color('blue') : 'transparent')};
@@ -29,10 +59,15 @@ const CardShell = styled.div<{ $highlighted?: boolean }>`
   flex-direction: column;
   height: 100%;
   min-height: 0;
-  overflow: hidden;
+  overflow: visible;
   padding: ${spacing(3.5)} ${spacing(4)};
   position: relative;
   z-index: 1;
+
+  ${mediaUp('md')} {
+    min-height: 520px;
+    padding: ${spacing(4)} ${spacing(4)};
+  }
 
   & > * + * {
     margin-top: ${spacing(3)};
@@ -118,6 +153,7 @@ const CardIcon = styled.div<{ $widthPx: number }>`
 
 const CtaRow = styled.div`
   flex-shrink: 0;
+  margin-top: auto;
   width: 100%;
 
   > * {
@@ -153,6 +189,9 @@ export function PlanCard({
 
   return (
     <CardShell $highlighted={highlighted}>
+      {highlighted ? (
+        <HighlightTag>{i18n._(msg`Le Choix des Pionniers`)}</HighlightTag>
+      ) : null}
       <CardHeader>
         <CardHeaderInfo>
           <Heading

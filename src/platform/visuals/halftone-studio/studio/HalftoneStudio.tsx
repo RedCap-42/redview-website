@@ -264,7 +264,7 @@ export function HalftoneStudio() {
   const defaultExportName = useMemo(() => {
     if (state.settings.sourceMode === 'image') {
       if (!imageFile || imageFile.name === DEFAULT_IMAGE_FILENAME) {
-        return 'TwentyImage';
+        return 'RedViewImage';
       }
 
       return HALFTONE_EXPORT_PARSING.deriveComponentName(undefined, imageFile);

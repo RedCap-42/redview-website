@@ -16,8 +16,8 @@ export const WHY_REDVIEW_EDITORIALS: readonly WhyRedViewEditorial[] = [
     heading: msg`Voir sous la canopée. *Inspectez la praticabilité réelle du sol.*`,
     id: 'terrain-quality',
     paragraphs: [
-      msg`Sur les fonds de carte standards et les vues satellites, les sentiers forestiers et les pierriers d'altitude restent invisibles sous la végétation. Le cycliste ou randonneur découvre la rudesse du terrain au dernier moment. RedView lève cette incertitude grâce aux dalles brutes LiDAR IGN à 20 cm de précision : la végétation est gommée pour révéler le sol nu, les talus, les rochers et la granulométrie réelle des chemins.`,
-      msg`Le moteur de routage segmente précisément 8 types de surfaces (Gravel tassé, Singletrack technique, Pistes forestières, Routes secondaires) avec des règles strictes (préférer, tolérer, éviter, interdire). Vous savez exactement où commence l'asphalte et où débute le sentier engagé.`,
+      msg`Une carte satellite montre une forêt. Le LiDAR montre ce qu'il y a dessous : le sentier qui serpente entre les blocs, le talus, le pierrier que personne n'avait signalé. Les dalles brutes IGN à 20 cm sont gommées de leur végétation pour révéler le sol nu et sa granulométrie réelle — celle sur laquelle vous allez rouler ou marcher.`,
+      msg`Le moteur segmente 8 types de surfaces (gravel tassé, singletrack technique, piste forestière, route secondaire) et vous laisse régler vos tolérances : préférer, tolérer, éviter, interdire. Vous savez où commence l'asphalte et où débute le sentier engagé, avant de partir.`,
     ],
   },
   {
@@ -26,8 +26,8 @@ export const WHY_REDVIEW_EDITORIALS: readonly WhyRedViewEditorial[] = [
     heading: msg`Corridors de POI et allure prédictive. *Maîtrisez vos temps de passage.*`,
     id: 'planning-timing',
     paragraphs: [
-      msg`Trouver de l'eau potable, une boulangerie ou un refuge en autonomie totale ne doit pas dépendre de recherches manuelles fastidieuses. RedView projette un corridor configurable de 50 à 500 m le long de votre trace GPX et en extrait automatiquement tous les points d'intérêt vitaux. Chaque pause programmée (5 min à une fontaine, 20 min de ravitaillement, 3h30 de sommeil) est réinjectée dans votre feuille de route.`,
-      msg`Notre moteur Wasm/Rust calcule votre vitesse segment par segment en intégrant votre puissance (Watts/FTP), le poids roulant total (vélo + paquetage) et la résistance au roulement (Crr). Vous obtenez une heure d'arrivée (ETA) au sommet d'un col d'une fiabilité absolue.`,
+      msg`Savoir, à l'avance, qu'il y a une fontaine à 40 m de votre trace au kilomètre 62 change la façon dont vous remplissez votre sac. RedView projette un corridor configurable de 50 à 500 m le long de votre GPX et en extrait automatiquement les points d'eau, refuges et ravitaillements. Chaque pause programmée est réinjectée dans votre feuille de route.`,
+      msg`Le moteur Wasm/Rust calcule votre vitesse segment par segment en intégrant votre puissance réelle (FTP), le poids roulant total et la résistance au roulement. Vous obtenez une heure de passage au col qui tient debout — et vous savez si vous arrivez de jour ou de nuit.`,
     ],
   },
   {
@@ -36,8 +36,8 @@ export const WHY_REDVIEW_EDITORIALS: readonly WhyRedViewEditorial[] = [
     heading: msg`Plusieurs variantes sur une même carte. *Arbitrez en un coup d'œil.*`,
     id: 'multi-trace',
     paragraphs: [
-      msg`Fini les dizaines de fenêtres ouvertes et les fichiers GPX renommés pour comparer deux options de parcours. Avec le système ItineraryProject de RedView, regroupez et superposez toutes vos variantes sur une seule et même scène 3D interactive.`,
-      msg`Comparez instantanément le ratio dénivelé/distance, la part respective de sentier et de route goudronnée, ainsi que le chrono prédictif de chaque variante. Vous fusionnez, découpez vos étapes journalières et choisissez la meilleure trajectoire avec une clarté totale.`,
+      msg`Le choix se joue souvent entre deux options qu'on ne peut pas comparer : la plus directe, ou celle qui passe plus près d'un refuge. RedView les superpose dans une seule scène 3D interactive, au lieu de laisser dix fichiers GPX ouverts dans dix fenêtres.`,
+      msg`Vous comparez d'un coup d'œil le ratio dénivelé/distance, la part réelle de sentier contre celle de goudron, et le chrono prédictif de chaque variante. Vous découpez, fusionnez, et partez sur la trajectoire que vous avez réellement choisie.`,
     ],
   },
 ];

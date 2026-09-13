@@ -33,6 +33,3 @@ export function RedViewLogo({ sizePx = 40 }: RedViewLogoProps) {
     </LogoSvg>
   );
 }
-
-export const TwentyLogo = RedViewLogo;
-export type TwentyLogoProps = RedViewLogoProps;

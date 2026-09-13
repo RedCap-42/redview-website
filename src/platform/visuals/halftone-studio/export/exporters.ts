@@ -108,7 +108,7 @@ function getStandaloneThreeImports(
   return imports.join('\n      ');
 }
 
-function getTwentyReactHeaderComment(
+function getRedViewReactHeaderComment(
   componentName: string,
   registryKey: string,
   assetUrl?: string,
@@ -1117,7 +1117,7 @@ function generateReactComponent(
   const defaultImageUrl = assetUrl ?? `./${defaultImageFilename}`;
   const importBlock = getReactImportBlock(exportSettings, isImageMode, shape);
   const headerComment = exportSettings.includeRegistryComment
-    ? getTwentyReactHeaderComment(
+    ? getRedViewReactHeaderComment(
         normalizedComponentName,
         toIllustrationRegistryKey(normalizedComponentName),
         isImageMode || shape.kind === 'imported'

@@ -2,7 +2,7 @@ import { msg } from '@lingui/core/macro';
 
 export const CLIENT_BRIEF_COPY = {
   title: msg`Tell us what you need\n*We'll find the right partner*`,
-  subtitle: msg`Share your CRM project brief and our team will match you with a certified Twenty partner.`,
+  subtitle: msg`Share your terrain project brief and our team will match you with a certified RedView partner.`,
   back: msg`← Back`,
   next: msg`Continue →`,
   skip: msg`Skip for now`,
@@ -20,10 +20,10 @@ export const CLIENT_BRIEF_COPY = {
   },
   fields: {
     need: msg`What do you need help with? *`,
-    needPlaceholder: msg`e.g. Migrate from HubSpot, set up pipelines, custom integrations…`,
+    needPlaceholder: msg`e.g. LiDAR terrain analysis, snow modelling, GPX route exports…`,
     requirements: msg`Requirements or constraints`,
-    requirementsPlaceholder: msg`Must-haves, integrations, compliance, languages…`,
-    hostingType: msg`Hosting preference`,
+    requirementsPlaceholder: msg`Must-haves, data sources, terrain zones, languages…`,
+    hostingType: msg`Deployment preference`,
     hostingTypePlaceholder: msg`Cloud or self-hosted?`,
     country: msg`Country / region`,
     countryPlaceholder: msg`e.g. France, DACH, North America…`,
@@ -34,11 +34,11 @@ export const CLIENT_BRIEF_COPY = {
     timeline: msg`Timeline`,
     timelinePlaceholder: msg`e.g. Before Q4, Q1 2027…`,
     budgetRange: msg`Budget range`,
-    budgetRangePlaceholder: msg`e.g. $10k–$25k`,
+    budgetRangePlaceholder: msg`e.g. €10k–€25k`,
     firstName: msg`First name *`,
     lastName: msg`Last name`,
     email: msg`Work email *`,
-    companyName: msg`Company name *`,
+    companyName: msg`Organisation name *`,
   },
   stepHeaders: {
     brief: msg`Your brief`,
@@ -46,7 +46,7 @@ export const CLIENT_BRIEF_COPY = {
     identity: msg`You`,
   },
   hostingOptions: {
-    cloud: msg`Cloud (Twenty-hosted)`,
+    cloud: msg`Cloud (RedView-hosted)`,
     selfHosting: msg`Self-hosting`,
   },
 };

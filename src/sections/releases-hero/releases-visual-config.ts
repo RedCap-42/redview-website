@@ -3,14 +3,14 @@ import { paletteColorNumber } from '@/tokens';
 import { type HalftoneImageBackdropProps } from '@/platform/visuals/rigs/HalftoneImageBackdrop';
 
 // The release-notes milestone halftone: chalk (#f3f3f3) dashes over the iron
-// (#777777) panel, cover-fit over the milestone photo with a soft hover light.
+// (#777777) panel, cover-fit over the milestone image with a soft hover light.
 // Auto-rotation (the old base config) is inert for image sources — a still
 // halftone where only the hover light moves.
 export const RELEASES_VISUAL: Pick<
   HalftoneImageBackdropProps,
   'imageUrl' | 'settings'
 > = {
-  imageUrl: '/images/releases/milestone.webp',
+  imageUrl: '/images/features/neige.png',
   settings: {
     previewDistance: 4,
     imageFit: 'cover',

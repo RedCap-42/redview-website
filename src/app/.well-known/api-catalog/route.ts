@@ -3,49 +3,24 @@ import { SITE_URLS } from '@/platform/site-urls';
 // Route handler (not a public/ file) so the RFC 9727 application/linkset+json
 // content type survives the site's global nosniff header.
 //
-// Twenty is multi-tenant, so anchors use a `{your-workspace-url}` placeholder
-// (a workspace host such as `mycompany.twenty.com` or a custom domain).
+// RedView exposes its API surface under the app host, so every anchor is rooted
+// on the public application URL.
 
-const WORKSPACE = 'https://{your-workspace-url}';
+const APP = process.env.NEXT_PUBLIC_APP_URL || 'https://app.redview.tech';
 
 const apiCatalog = {
   linkset: [
     {
-      anchor: `${WORKSPACE}/rest`,
-      'service-desc': [
-        { href: `${WORKSPACE}/rest/open-api/core`, type: 'application/json' },
-      ],
-      'service-doc': [{ href: SITE_URLS.docsApi, type: 'text/html' }],
-      'service-meta': [
-        {
-          href: `${WORKSPACE}/.well-known/oauth-protected-resource`,
-          type: 'application/json',
-        },
-      ],
-    },
-    {
-      anchor: `${WORKSPACE}/rest/metadata`,
-      'service-desc': [
-        {
-          href: `${WORKSPACE}/rest/open-api/metadata`,
-          type: 'application/json',
-        },
-      ],
+      anchor: `${APP}/api`,
       'service-doc': [{ href: SITE_URLS.docsApi, type: 'text/html' }],
     },
     {
-      anchor: `${WORKSPACE}/graphql`,
-      'service-doc': [{ href: SITE_URLS.docsApi, type: 'text/html' }],
+      anchor: `${APP}/api/traces`,
+      'service-doc': [{ href: SITE_URLS.docsUserGuide, type: 'text/html' }],
     },
     {
-      anchor: `${WORKSPACE}/mcp`,
-      'service-desc': [
-        {
-          href: 'https://twenty.com/.well-known/mcp/server-card.json',
-          type: 'application/json',
-        },
-      ],
-      'service-doc': [{ href: SITE_URLS.docsMcp, type: 'text/html' }],
+      anchor: `${APP}/api/terrain`,
+      'service-doc': [{ href: SITE_URLS.docsGettingStarted, type: 'text/html' }],
     },
   ],
 };

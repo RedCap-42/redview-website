@@ -87,15 +87,31 @@ export async function POST(request: Request) {
     const recipient =
       process.env.FEEDBACK_RECIPIENT_EMAIL || 'redview.app@proton.me';
 
-    const featureLabel = FEATURE_LABELS[feature] || feature || 'Non spécifié';
-    const categoryLabel =
-      CATEGORY_LABELS[feedbackType] || feedbackType || 'Retour utilisateur';
-    const userName = [firstName, lastName].filter(Boolean).join(' ') || 'Utilisateur RedView';
-    const sportLabel = SPORT_LABELS[primarySport] || primarySport || 'Non renseigné';
-    const levelLabel = LEVEL_LABELS[level] || level || 'Non renseigné';
-    const otherSports = (additionalSports || [])
-      .map((s) => SPORT_LABELS[s] || s)
-      .join(', ');
+    function escapeHtml(str: string): string {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    const featureLabel = escapeHtml(FEATURE_LABELS[feature] || feature || 'Non spécifié');
+    const categoryLabel = escapeHtml(
+      CATEGORY_LABELS[feedbackType] || feedbackType || 'Retour utilisateur',
+    );
+    const rawUserName = [firstName, lastName].filter(Boolean).join(' ') || 'Utilisateur RedView';
+    const userName = escapeHtml(rawUserName);
+    const safeEmail = escapeHtml(email || 'Non renseigné');
+    const safeCountry = escapeHtml(country || 'Non renseigné');
+    const safeAnnualVolume = escapeHtml(annualVolume || 'Non renseigné');
+    const sportLabel = escapeHtml(SPORT_LABELS[primarySport] || primarySport || 'Non renseigné');
+    const levelLabel = escapeHtml(LEVEL_LABELS[level] || level || 'Non renseigné');
+    const otherSports = escapeHtml(
+      (additionalSports || []).map((s) => SPORT_LABELS[s] || s).join(', '),
+    );
+    const safeDescription = escapeHtml(description || '(Aucune description fournie)');
+    const safeAttachments = attachmentNames.map((a) => escapeHtml(a)).join(', ');
 
     const html = `
 <!DOCTYPE html>
@@ -191,25 +207,25 @@ export async function POST(request: Request) {
 
     <h2>Coordonnées de l'utilisateur</h2>
     <div class="row"><span class="label">Nom complet :</span> <span class="val">${userName}</span></div>
-    <div class="row"><span class="label">Adresse e-mail :</span> <span class="val">${email || 'Non renseigné'}</span></div>
-    <div class="row"><span class="label">Pays :</span> <span class="val">${country || 'Non renseigné'}</span></div>
+    <div class="row"><span class="label">Adresse e-mail :</span> <span class="val">${safeEmail}</span></div>
+    <div class="row"><span class="label">Pays :</span> <span class="val">${safeCountry}</span></div>
 
     <h2>Pratique sportive</h2>
     <div class="row"><span class="label">Sport principal :</span> <span class="val">${sportLabel}</span></div>
     <div class="row"><span class="label">Niveau :</span> <span class="val">${levelLabel}</span></div>
-    <div class="row"><span class="label">Volume annuel :</span> <span class="val">${annualVolume || 'Non renseigné'}</span></div>
+    <div class="row"><span class="label">Volume annuel :</span> <span class="val">${safeAnnualVolume}</span></div>
     ${otherSports ? `<div class="row"><span class="label">Autres pratiques :</span> <span class="val">${otherSports}</span></div>` : ''}
 
     <h2>Détails du retour</h2>
     <div class="row"><span class="label">Fonctionnalité :</span> <span class="val">${featureLabel}</span></div>
     <div class="row"><span class="label">Catégorie :</span> <span class="val">${categoryLabel}</span></div>
     ${
-      attachmentNames.length > 0
-        ? `<div class="row"><span class="label">Fichiers mentionnés :</span> <span class="val">${attachmentNames.join(', ')}</span></div>`
+      safeAttachments
+        ? `<div class="row"><span class="label">Fichiers mentionnés :</span> <span class="val">${safeAttachments}</span></div>`
         : ''
     }
 
-    <div class="desc-box">${description || '(Aucune description fournie)'}</div>
+    <div class="desc-box">${safeDescription}</div>
 
     <div class="footer">
       Soumis le ${new Date(submittedAt).toLocaleString('fr-FR', { timeZone: 'Europe/Paris' })} via RedView Web

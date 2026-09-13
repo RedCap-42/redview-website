@@ -6,33 +6,33 @@ import { defineFieldOptions } from './define-field-options';
 export const PARTNER_SCOPE_OPTIONS = defineFieldOptions([
   {
     value: 'ADVISORY',
-    label: msg`Advisory & Discovery`,
-    description: msg`Upfront consulting, scoping, strategy.`,
-    examples: msg`CRM audit · Requirements · Process mapping · ROI · RevOps · Vendor selection`,
+    label: msg`Conseil & Analyse de terrain`,
+    description: msg`Analyse en amont, cadrage et méthodologie.`,
+    examples: msg`Lecture de terrain · Analyse nivologique · Reconnaissance d'itinéraire · Étude de praticabilité · Choix de variante · Évaluation du risque`,
   },
   {
     value: 'SOLUTIONING',
-    label: msg`Solutioning`,
-    description: msg`What an admin can do without writing code.`,
-    examples: msg`Data modeling · Migrations · No-code workflows · Dashboards · SSO/SCIM · Integrations`,
+    label: msg`Préparation d'itinéraires`,
+    description: msg`Ce que vous produisez directement dans RedView, sans développement.`,
+    examples: msg`Import GPX · Analyse de pente · Simulation solaire · Corridor POI · Export enrichi · Dossiers de course`,
   },
   {
     value: 'DEVELOPMENT',
-    label: msg`Custom Development`,
-    description: msg`Anything that needs a developer.`,
-    examples: msg`Custom Apps · Scripts · AI/agent integrations`,
+    label: msg`Développement & Intégration`,
+    description: msg`Tout ce qui nécessite des compétences techniques.`,
+    examples: msg`Intégration SIG · API géospatiale · Automatisation · Traitement LiDAR · Chaînes de données`,
   },
   {
     value: 'HOSTING',
-    label: msg`Hosting & Infrastructure`,
-    description: msg`Anything that needs devops skills.`,
-    examples: msg`Self-hosted (Docker/K8s) · Cloud architecture · Scaling · Security · Monitoring`,
+    label: msg`Hébergement & Infrastructure`,
+    description: msg`Tout ce qui relève de l'infrastructure ou du devops.`,
+    examples: msg`Auto-hébergement (Docker/K8s) · Architecture cloud · Tuiles & CDN · Montée en charge · Sécurité`,
   },
   {
     value: 'SUPPORT',
-    label: msg`Training, Adoption & Support`,
-    description: msg`User-side rollout & ongoing support.`,
-    examples: msg`Onboarding · Documentation · Change management · L1/L2 support · Managed services`,
+    label: msg`Formation & Accompagnement`,
+    description: msg`Déploiement auprès des équipes et support continu.`,
+    examples: msg`Formation de guides · Documentation · Accompagnement d'école · Support · Prestations récurrentes`,
   },
 ]);
 

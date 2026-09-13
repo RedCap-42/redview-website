@@ -2,7 +2,7 @@ import { type PartnerCountryValue } from './data/partner-country-options';
 import { type PartnerLanguageValue } from './data/partner-language-options';
 import { type PartnerScopeValue } from './data/partner-scope-options';
 import { type PartnerTeamTypeValue } from './data/partner-team-type-options';
-import { type PartnerTwentyExperienceValue } from './data/partner-twenty-experience-options';
+import { type PartnerTerrainExperienceValue } from './data/partner-terrain-experience-options';
 
 export type CountryFieldValue = PartnerCountryValue | '';
 
@@ -26,10 +26,10 @@ export type PartnerApplicationState = {
   partnerScope: PartnerScopeValue[];
   skills: string[];
 
-  // Experience (what they've built in Twenty)
-  twentyExperience: PartnerTwentyExperienceValue[];
-  twentyExperienceNotes: string;
-  twentyExperienceProofLink: string;
+  // Experience (what terrain work they've shipped with RedView)
+  terrainExperience: PartnerTerrainExperienceValue[];
+  terrainExperienceNotes: string;
+  terrainExperienceProofLink: string;
 
   // Commercials
   hourlyRate: string;
@@ -44,7 +44,7 @@ export type PartnerApplicationState = {
 };
 
 // The scalar (string-valued) fields a single SET_FIELD action can target;
-// multi-value fields (languages, partnerScope, skills, twentyExperience) have
+// multi-value fields (languages, partnerScope, skills, terrainExperience) have
 // their own actions.
 export type ScalarFieldName =
   | 'name'
@@ -55,8 +55,8 @@ export type ScalarFieldName =
   | 'city'
   | 'country'
   | 'typeOfTeam'
-  | 'twentyExperienceNotes'
-  | 'twentyExperienceProofLink'
+  | 'terrainExperienceNotes'
+  | 'terrainExperienceProofLink'
   | 'hourlyRate'
   | 'projectBudgetMin'
   | 'calendarLink';
@@ -65,7 +65,7 @@ export type PartnerApplicationAction =
   | { type: 'SET_FIELD'; field: ScalarFieldName; value: string }
   | { type: 'TOGGLE_SCOPE'; value: PartnerScopeValue }
   | { type: 'TOGGLE_LANGUAGE'; value: PartnerLanguageValue }
-  | { type: 'TOGGLE_EXPERIENCE'; value: PartnerTwentyExperienceValue }
+  | { type: 'TOGGLE_EXPERIENCE'; value: PartnerTerrainExperienceValue }
   | { type: 'SET_SKILLS'; value: string[] }
   | { type: 'GO_NEXT' }
   | { type: 'GO_BACK' }
@@ -87,9 +87,9 @@ export const INITIAL_PARTNER_APPLICATION_STATE: PartnerApplicationState = {
   typeOfTeam: '',
   partnerScope: [],
   skills: [],
-  twentyExperience: [],
-  twentyExperienceNotes: '',
-  twentyExperienceProofLink: '',
+  terrainExperience: [],
+  terrainExperienceNotes: '',
+  terrainExperienceProofLink: '',
   hourlyRate: '',
   projectBudgetMin: '',
   calendarLink: '',

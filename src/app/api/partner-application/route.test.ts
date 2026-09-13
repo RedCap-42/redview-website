@@ -15,9 +15,9 @@ const VALID_PAYLOAD = {
   city: 'London',
   hourlyRate: 150,
   projectBudgetMin: 5000,
-  twentyExperience: ['WORKFLOWS'],
-  twentyExperienceNotes: VALID_EXPERIENCE_NOTES,
-  twentyExperienceProofLink: 'https://www.loom.com/share/example',
+  terrainExperience: ['WORKFLOWS'],
+  terrainExperienceNotes: VALID_EXPERIENCE_NOTES,
+  terrainExperienceProofLink: 'https://www.loom.com/share/example',
 };
 
 const VALID_BODY = JSON.stringify(VALID_PAYLOAD);
@@ -156,7 +156,7 @@ describe('POST /api/partner-application', () => {
       buildRequest({
         body: JSON.stringify({
           ...VALID_PAYLOAD,
-          twentyExperienceNotes: 'Too short for a real implementation.',
+          terrainExperienceNotes: 'Too short for a real implementation.',
         }),
         ip: '203.0.113.18',
       }),
@@ -164,13 +164,13 @@ describe('POST /api/partner-application', () => {
     expect(response.status).toBe(400);
   });
 
-  it('returns 400 when twentyExperience is empty', async () => {
+  it('returns 400 when terrainExperience is empty', async () => {
     const { POST } = await loadRoute();
     const response = await POST(
       buildRequest({
         body: JSON.stringify({
           ...VALID_PAYLOAD,
-          twentyExperience: [],
+          terrainExperience: [],
         }),
         ip: '203.0.113.19',
       }),
@@ -218,9 +218,9 @@ describe('POST /api/partner-application', () => {
       city: 'London',
       hourlyRate: 150,
       projectBudgetMin: 5000,
-      twentyExperience: ['WORKFLOWS'],
-      twentyExperienceNotes: VALID_EXPERIENCE_NOTES,
-      twentyExperienceProofLink: 'https://www.loom.com/share/example',
+      terrainExperience: ['WORKFLOWS'],
+      terrainExperienceNotes: VALID_EXPERIENCE_NOTES,
+      terrainExperienceProofLink: 'https://www.loom.com/share/example',
     });
     expect(init.signal).toBeInstanceOf(AbortSignal);
   });

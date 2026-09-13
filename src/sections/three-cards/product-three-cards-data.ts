@@ -4,18 +4,18 @@ import { type IllustrationCardRecord } from './three-cards.data';
 
 export const PRODUCT_ILLUSTRATION_CARDS: readonly IllustrationCardRecord[] = [
   {
-    heading: msg`Qualité du Terrain & LiDAR 20cm`,
-    body: msg`Inspection du sol nu sans végétation pour repérer pierriers, talus et sentiers techniques.`,
+    heading: msg`Le sol, sans la végétation`,
+    body: msg`Les dalles LiDAR 20 cm sont gommées de leur canopée. Vous voyez le pierrier, le talus et la granulométrie du chemin — pas une tache verte uniforme.`,
     illustration: 'eye',
   },
   {
-    heading: msg`Planification & Corridors POI`,
-    body: msg`Détection automatisée des fontaines et boulangeries avec simulation exacte de vos temps de passage.`,
+    heading: msg`De l'eau au kilomètre 62`,
+    body: msg`Le corridor de POI scanne 50 à 500 m de part et d'autre de votre trace et vous dit où sont les fontaines, refuges et ravitaillements, avec l'heure à laquelle vous y passerez.`,
     illustration: 'speed',
   },
   {
-    heading: msg`Comparaison Multi-Traces`,
-    body: msg`Superposition de plusieurs variantes sur la même scène 3D pour comparer dénivelés et chronos.`,
+    heading: msg`Deux variantes, une décision`,
+    body: msg`Superposez vos options dans la même scène 3D et comparez d'un regard le dénivelé, la part de sentier et le chrono prédictif de chacune.`,
     illustration: 'singleScreen',
   },
 ];

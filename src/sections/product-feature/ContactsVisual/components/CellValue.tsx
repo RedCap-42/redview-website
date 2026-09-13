@@ -77,7 +77,7 @@ export function CellValue({
       return (
         <BooleanRow>
           {company.icp ? <IconCheck size={14} /> : <IconX size={14} />}
-          <BooleanText>{company.icp ? 'True' : 'False'}</BooleanText>
+          <BooleanText>{company.icp ? 'Oui' : 'Non'}</BooleanText>
         </BooleanRow>
       );
     case 'arr':

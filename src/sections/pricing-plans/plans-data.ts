@@ -31,28 +31,32 @@ type PlansTier = {
   icon: { alt: string; src: string; widthPx?: number };
 };
 
+const appBaseUrl = SITE_URLS.appWelcome.replace(/\/$/, '');
+const founderCheckoutUrl = `${appBaseUrl}/?tab=subscription&tier=founder`;
+const patronCheckoutUrl = `${appBaseUrl}/?tab=subscription&tier=patron`;
+
 const FREE_BULLETS = [
-  msg`Moteur 3D & LiDAR 20 cm illimités sur le web`,
-  msg`Simulation météo, vent, ensoleillement & neige`,
-  msg`Routage intelligent & export GPX illimité`,
-  msg`Accès complet sans carte bancaire`,
+  msg`Moteur 3D LiDAR haute précision (accès illimité web)`,
+  msg`Simulations météo, vent, ensoleillement & neige`,
+  msg`Routage intelligent, profil altimétrique & export GPX`,
+  msg`Accès immédiat et complet sans carte bancaire`,
 ];
 
 const FOUNDER_BULLETS = [
-  msg`Tout l'Accès Web Bêta inclus`,
-  msg`Accès prioritaire à la future App Mobile (iOS TestFlight & Android)`,
-  msg`Statut Fondateur : -50% à vie sur les futurs abonnements`,
-  msg`Droit de vote sur les prochains massifs 3D modélisés`,
-  msg`Salon Discord privé & échanges directs avec le développeur`,
-  msg`Soutenez directement le développement indépendant`,
+  msg`Tous les accès et fonctionnalités de la Bêta Web inclus`,
+  msg`Accès Bêta prioritaire à la future application mobile iOS (TestFlight)`,
+  msg`Droit de vote sur les prochains massifs 3D modélisés (LiDAR HD)`,
+  msg`Badge officiel Membre Fondateur sur votre profil et traces publiques`,
+  msg`Paiement unique de 5 € · Soutien au développement indépendant`,
 ];
 
 const PATRON_BULLETS = [
   msg`Tous les privilèges du Pass Fondateur inclus`,
-  msg`1 An de compte PRO offert au lancement de la v1`,
-  msg`Accès VIP ultra-prioritaire aux premières versions mobiles`,
-  msg`Votre nom ou pseudo sur la page officielle des Soutiens`,
-  msg`Contact direct pour proposer de nouvelles zones ou fonctionnalités`,
+  msg`Accès Bêta iOS TestFlight VIP (dès les premières builds Alpha)`,
+  msg`3 mois de compte RedView PRO offerts dès la sortie de la v1`,
+  msg`Parrainage de massif : proposez une zone prioritaire à modéliser`,
+  msg`Votre nom ou pseudo gravé au Panthéon officiel des Mécènes`,
+  msg`Contact direct avec l'équipe pour co-construire les fonctionnalités`,
 ];
 
 export const PLANS_DATA: Record<PlansTierId, PlansTier> = {
@@ -134,21 +138,21 @@ export const PLANS_DATA: Record<PlansTierId, PlansTier> = {
     cta: {
       cloud: {
         monthly: {
-          href: SITE_URLS.appWelcome,
+          href: founderCheckoutUrl,
           label: msg`Devenir Membre Fondateur (5€)`,
         },
         yearly: {
-          href: SITE_URLS.appWelcome,
+          href: founderCheckoutUrl,
           label: msg`Devenir Membre Fondateur (5€)`,
         },
       },
       selfHost: {
         monthly: {
-          href: SITE_URLS.appWelcome,
+          href: founderCheckoutUrl,
           label: msg`Devenir Membre Fondateur (5€)`,
         },
         yearly: {
-          href: SITE_URLS.appWelcome,
+          href: founderCheckoutUrl,
           label: msg`Devenir Membre Fondateur (5€)`,
         },
       },
@@ -185,21 +189,21 @@ export const PLANS_DATA: Record<PlansTierId, PlansTier> = {
     cta: {
       cloud: {
         monthly: {
-          href: SITE_URLS.appWelcome,
+          href: patronCheckoutUrl,
           label: msg`Devenir Mécène (dès 15€)`,
         },
         yearly: {
-          href: SITE_URLS.appWelcome,
+          href: patronCheckoutUrl,
           label: msg`Devenir Mécène (dès 15€)`,
         },
       },
       selfHost: {
         monthly: {
-          href: SITE_URLS.appWelcome,
+          href: patronCheckoutUrl,
           label: msg`Devenir Mécène (dès 15€)`,
         },
         yearly: {
-          href: SITE_URLS.appWelcome,
+          href: patronCheckoutUrl,
           label: msg`Devenir Mécène (dès 15€)`,
         },
       },

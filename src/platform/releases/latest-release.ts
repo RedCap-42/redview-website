@@ -9,5 +9,5 @@ export const LATEST_RELEASE: {
 } = {
   release: '3.2.0',
   title: 'Moteur Nival AROME & Profils BRF Dynamiques',
-  previewImage: '/images/releases/2.0/2.0.0-custom-layouts.webp',
+  previewImage: '/images/features/neige.png',
 };

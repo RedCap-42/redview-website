@@ -195,6 +195,11 @@ export function TestimonialsCarousel({
   const hasNext = index < total - 1;
   const current = testimonials[index];
 
+  // Nothing to say until a real, consented testimonial exists.
+  if (current === undefined) {
+    return null;
+  }
+
   return (
     <CarouselGrid
       aria-label={i18n._(msg`Testimonials`)}

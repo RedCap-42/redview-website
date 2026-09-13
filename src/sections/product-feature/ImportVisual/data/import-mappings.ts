@@ -1,31 +1,31 @@
 import { msg } from '@lingui/core/macro';
 import {
-  IconBriefcase,
-  IconBuildingSkyscraper,
-  IconMail,
+  IconCalendarStats,
+  IconMountain,
+  IconRoute,
   IconUser,
 } from '@tabler/icons-react';
 
 import { type ColumnMapping } from '../types/column-mapping';
 
 export const MAPPINGS: ColumnMapping[] = [
-  { Icon: IconUser, example: 'Dario', field: msg`Name`, header: 'First Name' },
+  { Icon: IconUser, example: 'Col du Galibier', field: msg`Trace`, header: 'Trace' },
   {
-    Icon: IconMail,
-    example: 'dario@anthropic.com',
-    field: msg`Emails`,
-    header: 'Email',
+    Icon: IconRoute,
+    example: '6.4078, 45.0640',
+    field: msg`Départ`,
+    header: 'Départ',
   },
   {
-    Icon: IconBuildingSkyscraper,
-    example: 'Anthropic',
-    field: msg`Company`,
-    header: 'Company',
+    Icon: IconMountain,
+    example: '2 642 m',
+    field: msg`Sommet`,
+    header: 'Sommet',
   },
   {
-    Icon: IconBriefcase,
-    example: 'CEO',
-    field: msg`Job Title`,
-    header: 'Job Title',
+    Icon: IconCalendarStats,
+    example: '42,1 km',
+    field: msg`Distance`,
+    header: 'Distance',
   },
 ];

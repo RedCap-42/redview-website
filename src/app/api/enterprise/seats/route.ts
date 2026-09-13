@@ -41,8 +41,19 @@ export async function POST(request: Request) {
       );
     }
 
-    if (typeof seatCount !== 'number' || seatCount < 1) {
-      return NextResponse.json({ error: 'Invalid seatCount' }, { status: 400 });
+    const MAX_SELF_SERVICE_SEATS = 500;
+    if (
+      typeof seatCount !== 'number' ||
+      !Number.isInteger(seatCount) ||
+      seatCount < 1 ||
+      seatCount > MAX_SELF_SERVICE_SEATS
+    ) {
+      return NextResponse.json(
+        {
+          error: `Invalid seatCount. Must be an integer between 1 and ${MAX_SELF_SERVICE_SEATS}. Contact support for larger fleets.`,
+        },
+        { status: 400 },
+      );
     }
 
     const payload = verifyEnterpriseKey(enterpriseKey);

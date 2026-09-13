@@ -8,11 +8,11 @@ export type ProblemPoint = {
 
 export const PROBLEM_POINTS: readonly ProblemPoint[] = [
   {
-    heading: msg`L'approximation des temps et de l'effort`,
-    body: msg`Les calculateurs standards ignorent votre puissance en Watts (FTP), le poids réel de votre vélo et les ralentissements météo, faussant vos heures d'arrivée.`,
+    heading: msg`La nuit tombe avant vous`,
+    body: msg`Votre calculateur a ignoré le poids du sac et le vent de face. Il annonçait 18 h au refuge, vous y arrivez à 21 h 40, sans frontale sur les derniers kilomètres.`,
   },
   {
-    heading: msg`L'invisibilité des obstacles sous la canopée`,
-    body: msg`Avec une maille satellite à 30m, les pierriers glissants, failles rocheuses et sentiers impraticables restent masqués jusqu'au moment où vous êtes coincé sur le terrain.`,
+    heading: msg`Le pierrier que la carte cachait`,
+    body: msg`Vous voyez un sentier propre sur la vue satellite. Sur place, c'est une pente à 28 % sous la canopée, que vous découvrez à 2 400 m — quand faire demi-tour coûte plus cher que continuer.`,
   },
 ];

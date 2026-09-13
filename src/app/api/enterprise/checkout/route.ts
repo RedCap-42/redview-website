@@ -26,21 +26,22 @@ export async function POST(request: Request) {
     const billingInterval =
       body.billingInterval === 'yearly' ? 'yearly' : 'monthly';
     const priceId = getEnterprisePriceId(billingInterval);
-    const websiteUrl = process.env.NEXT_PUBLIC_WEBSITE_URL;
-    const defaultSuccessUrl = websiteUrl
-      ? `${websiteUrl}/enterprise/activate?session_id={CHECKOUT_SESSION_ID}`
-      : undefined;
-    const successUrl =
-      typeof body.successUrl === 'string' ? body.successUrl : defaultSuccessUrl;
+    const websiteUrl = process.env.NEXT_PUBLIC_WEBSITE_URL || 'https://redview.tech';
+    let successUrl = `${websiteUrl}/enterprise/activate?session_id={CHECKOUT_SESSION_ID}`;
 
-    if (!successUrl) {
-      return NextResponse.json(
-        {
-          error:
-            'Missing successUrl or NEXT_PUBLIC_WEBSITE_URL for checkout redirect',
-        },
-        { status: 500 },
-      );
+    if (typeof body.successUrl === 'string' && body.successUrl.trim()) {
+      const candidate = body.successUrl.trim();
+      // Allow only local relative paths (no protocol-relative // or backslashes) or matching website domain
+      if (candidate.startsWith('/') && !candidate.startsWith('//') && !candidate.includes('\\')) {
+        successUrl = `${websiteUrl}${candidate}`;
+      } else if (candidate.startsWith(websiteUrl)) {
+        successUrl = candidate;
+      } else {
+        return NextResponse.json(
+          { error: 'Invalid successUrl: external redirection is prohibited.' },
+          { status: 400 },
+        );
+      }
     }
 
     const seatCount =

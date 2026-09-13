@@ -40,11 +40,6 @@ const nextConfig: LinariaConfig = {
         pathname: '/**',
         protocol: 'https',
       },
-      {
-        hostname: 'twenty-icons.com',
-        pathname: '/**',
-        protocol: 'https',
-      },
     ],
   },
   linaria: {
@@ -106,11 +101,10 @@ const nextConfig: LinariaConfig = {
         destination: 'https://redview.tech/:path*',
         permanent: true,
       },
-      // Strip the source-locale prefix: /fr/foo → /foo (301).
+      // Strip the source-locale prefix: /fr/foo → /foo (301). The source
+      // locale is unprefixed by design; other locales keep their segment.
       { source: '/fr', destination: '/', statusCode: 301 },
       { source: '/fr/:path*', destination: '/:path*', statusCode: 301 },
-      { source: '/en', destination: '/', statusCode: 301 },
-      { source: '/en/:path*', destination: '/:path*', statusCode: 301 },
       // Redirect legacy auth paths to the RedView App
       {
         source: '/auth',

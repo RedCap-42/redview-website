@@ -1,4 +1,4 @@
-// Authed GET against the Twenty partners API, cached at the fetch layer (the
+// Authed GET against the RedView partners API, cached at the fetch layer (the
 // house pattern — no unstable_cache wrapper). Env-gated: throws when the env is
 // missing so the seam's catch can fall back to [] cleanly.
 const REVALIDATE_SECONDS = 300;
@@ -12,10 +12,10 @@ export async function partnersApiFetch(
   path: string,
   options: PartnersApiFetchOptions = {},
 ): Promise<unknown> {
-  const baseUrl = process.env.TWENTY_PARTNERS_API_URL;
-  const apiKey = process.env.TWENTY_PARTNERS_API_KEY;
+  const baseUrl = process.env.REDVIEW_PARTNERS_API_URL;
+  const apiKey = process.env.REDVIEW_PARTNERS_API_KEY;
   if (baseUrl === undefined || apiKey === undefined) {
-    throw new Error('TWENTY_PARTNERS_API_URL / TWENTY_PARTNERS_API_KEY unset');
+    throw new Error('REDVIEW_PARTNERS_API_URL / REDVIEW_PARTNERS_API_KEY unset');
   }
 
   const response = await fetch(`${baseUrl.replace(/\/$/, '')}${path}`, {
@@ -31,7 +31,7 @@ export async function partnersApiFetch(
   if (!response.ok) {
     const body = await response.text();
     throw new Error(
-      `Twenty partners API ${response.status} ${path}: ${body.slice(0, 300)}`,
+      `RedView partners API ${response.status} ${path}: ${body.slice(0, 300)}`,
     );
   }
 

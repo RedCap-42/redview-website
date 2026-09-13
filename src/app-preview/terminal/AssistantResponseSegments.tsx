@@ -125,7 +125,7 @@ const buildCustomerParagraph = (
     onObjectCreated ? () => onObjectCreated(COMPANIES_ID) : undefined,
   ),
   text(
-    ' object that ships with Twenty, so accounts, domain favicons, and the People relation work for free. ',
+    ' object that ships with RedView, so accounts, domain favicons, and the People relation work for free. ',
   ),
   node('customer-file', <FileLink>payload.object.ts</FileLink>),
   text(' points its '),
@@ -209,10 +209,10 @@ const WRAPUP_PARAGRAPH: StreamingSegment[] = [
   node(
     'w-docs',
     <ReferenceLink
-      href="https://twenty.com/developers"
+      href="https://redview.tech"
       onClick={(event) => event.preventDefault()}
     >
-      Twenty app-building docs
+      RedView app-building docs
     </ReferenceLink>,
   ),
   text('.'),

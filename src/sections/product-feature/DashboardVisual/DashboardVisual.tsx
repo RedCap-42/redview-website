@@ -198,11 +198,11 @@ export function DashboardVisual({ active }: { active: boolean }) {
         </KpiRow>
         <ChartRow>
           <WidgetCard data-cell="bar">
-            <WidgetHeader>{i18n._(msg`Deals by month`)}</WidgetHeader>
+            <WidgetHeader>{i18n._(msg`Analyses by month`)}</WidgetHeader>
             <BarChart active={active} months={DASHBOARD_VISUAL_DATA.byMonth} />
           </WidgetCard>
           <WidgetCard data-cell="donut">
-            <WidgetHeader>{i18n._(msg`Deals by stage`)}</WidgetHeader>
+            <WidgetHeader>{i18n._(msg`Analyses by stage`)}</WidgetHeader>
             <DonutChart active={active} stages={DASHBOARD_VISUAL_DATA.stages} />
           </WidgetCard>
         </ChartRow>

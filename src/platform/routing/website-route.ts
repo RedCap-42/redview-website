@@ -4,11 +4,6 @@ import { type MetadataRoute } from 'next';
 export type WebsiteRouteId =
   | 'apps'
   | 'blog'
-  | 'comparePricingDynamics'
-  | 'comparePricingHubspot'
-  | 'comparePricingPipedrive'
-  | 'comparePricingSalesforce'
-  | 'comparePricingSap'
   | 'cookiePolicy'
   | 'customers'
   | 'enterpriseActivate'

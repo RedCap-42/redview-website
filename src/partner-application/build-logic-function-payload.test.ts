@@ -14,9 +14,9 @@ const minimalValid: PartnerApplicationRequest = {
   city: 'London',
   hourlyRate: 150,
   projectBudgetMin: 5000,
-  twentyExperience: ['WORKFLOWS'],
-  twentyExperienceNotes: validExperienceNotes,
-  twentyExperienceProofLink: 'https://www.loom.com/share/example',
+  terrainExperience: ['WORKFLOWS'],
+  terrainExperienceNotes: validExperienceNotes,
+  terrainExperienceProofLink: 'https://www.loom.com/share/example',
 };
 
 const fullValid: PartnerApplicationRequest = {
@@ -48,9 +48,9 @@ describe('buildLogicFunctionPayload', () => {
 
   it('forwards twenty experience fields to the webhook payload', () => {
     const payload = buildLogicFunctionPayload(fullValid);
-    expect(payload.twentyExperience).toEqual(['WORKFLOWS']);
-    expect(payload.twentyExperienceNotes).toBe(validExperienceNotes);
-    expect(payload.twentyExperienceProofLink).toBe(
+    expect(payload.terrainExperience).toEqual(['WORKFLOWS']);
+    expect(payload.terrainExperienceNotes).toBe(validExperienceNotes);
+    expect(payload.terrainExperienceProofLink).toBe(
       'https://www.loom.com/share/example',
     );
     expect(payload).not.toHaveProperty('applicationNotes');

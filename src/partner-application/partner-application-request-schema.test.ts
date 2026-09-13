@@ -13,9 +13,9 @@ const minimalValid = {
   city: 'London',
   hourlyRate: 150,
   projectBudgetMin: 5000,
-  twentyExperience: ['WORKFLOWS'],
-  twentyExperienceNotes: validExperienceNotes,
-  twentyExperienceProofLink: 'https://www.loom.com/share/example',
+  terrainExperience: ['WORKFLOWS'],
+  terrainExperienceNotes: validExperienceNotes,
+  terrainExperienceProofLink: 'https://www.loom.com/share/example',
 };
 
 const fullValid = {
@@ -100,9 +100,9 @@ describe('partnerApplicationRequestSchema', () => {
       'city',
       'hourlyRate',
       'projectBudgetMin',
-      'twentyExperience',
-      'twentyExperienceNotes',
-      'twentyExperienceProofLink',
+      'terrainExperience',
+      'terrainExperienceNotes',
+      'terrainExperienceProofLink',
     ]) {
       const withoutField = Object.fromEntries(
         Object.entries(minimalValid).filter(([key]) => key !== field),
@@ -113,38 +113,38 @@ describe('partnerApplicationRequestSchema', () => {
     }
   });
 
-  it('rejects empty twentyExperience', () => {
+  it('rejects empty terrainExperience', () => {
     expect(
       partnerApplicationRequestSchema.safeParse({
         ...minimalValid,
-        twentyExperience: [],
+        terrainExperience: [],
       }).success,
     ).toBe(false);
   });
 
-  it('rejects an unknown twentyExperience milestone', () => {
+  it('rejects an unknown terrainExperience milestone', () => {
     expect(
       partnerApplicationRequestSchema.safeParse({
         ...minimalValid,
-        twentyExperience: ['INTEGRATIONS'],
+        terrainExperience: ['INTEGRATIONS'],
       }).success,
     ).toBe(false);
   });
 
-  it('rejects twentyExperienceNotes shorter than 200 characters', () => {
+  it('rejects terrainExperienceNotes shorter than 200 characters', () => {
     expect(
       partnerApplicationRequestSchema.safeParse({
         ...minimalValid,
-        twentyExperienceNotes: 'Too short for a real implementation narrative.',
+        terrainExperienceNotes: 'Too short for a real implementation narrative.',
       }).success,
     ).toBe(false);
   });
 
-  it('rejects an invalid twentyExperienceProofLink', () => {
+  it('rejects an invalid terrainExperienceProofLink', () => {
     expect(
       partnerApplicationRequestSchema.safeParse({
         ...minimalValid,
-        twentyExperienceProofLink: 'not-a-url',
+        terrainExperienceProofLink: 'not-a-url',
       }).success,
     ).toBe(false);
   });

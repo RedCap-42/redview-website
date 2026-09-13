@@ -1,13 +1,17 @@
 const REVALIDATE_SECONDS = 300;
 
-const DEFAULT_MARKETPLACE_API_URL = 'https://api.twenty.com';
+const DEFAULT_MARKETPLACE_API_URL = '';
 
 export async function marketplaceGraphqlRequest<TData>(
   query: string,
   variables?: Record<string, unknown>,
 ): Promise<TData> {
   const baseUrl =
-    process.env.TWENTY_MARKETPLACE_API_URL ?? DEFAULT_MARKETPLACE_API_URL;
+    process.env.REDVIEW_MARKETPLACE_API_URL ?? DEFAULT_MARKETPLACE_API_URL;
+
+  if (baseUrl === '') {
+    throw new Error('REDVIEW_MARKETPLACE_API_URL unset');
+  }
 
   const response = await fetch(`${baseUrl.replace(/\/$/, '')}/metadata`, {
     method: 'POST',
@@ -22,7 +26,7 @@ export async function marketplaceGraphqlRequest<TData>(
   if (!response.ok) {
     const body = await response.text();
     throw new Error(
-      `Twenty marketplace API ${response.status}: ${body.slice(0, 300)}`,
+      `RedView marketplace API ${response.status}: ${body.slice(0, 300)}`,
     );
   }
 
@@ -33,14 +37,14 @@ export async function marketplaceGraphqlRequest<TData>(
 
   if (json.errors !== undefined && json.errors.length > 0) {
     throw new Error(
-      `Twenty marketplace API errors: ${json.errors
+      `RedView marketplace API errors: ${json.errors
         .map((error) => error.message)
         .join(', ')}`,
     );
   }
 
   if (json.data === undefined) {
-    throw new Error('Twenty marketplace API returned no data');
+    throw new Error('RedView marketplace API returned no data');
   }
 
   return json.data;

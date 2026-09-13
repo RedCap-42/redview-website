@@ -35,4 +35,12 @@ export const FAQ_QUESTIONS: readonly FaqQuestion[] = [
     question: msg`L'application fonctionne-t-elle sur tous les navigateurs et ordinateurs ?`,
     answer: msg`Oui. Le moteur 3D WebGL adaptatif ajuste automatiquement le niveau de détail et le maillage topographique en fonction de la puissance de votre carte graphique et de votre écran.`,
   },
+  {
+    question: msg`Pourquoi RedView est-il gratuit ?`,
+    answer: msg`Parce que l'outil qui manquait n'existait plus. FATMAP a fermé en octobre 2024, et les alternatives coûtent entre 25 et 75 € par an pour moins de précision sur la donnée de terrain. RedView ne prend aucune commission, ne revend aucune donnée et ne limite pas vos traces. Il vit du soutien volontaire de ceux qui l'utilisent, et le restera.`,
+  },
+  {
+    question: msg`Qui est derrière RedView ?`,
+    answer: msg`Une seule personne, en France. Pas d'équipe, pas d'investisseurs, pas de service marketing. Le moteur de neige, le visualisateur LiDAR et le calculateur d'allure ont été développés sur du temps d'études, parce qu'aucun outil existant ne répondait au besoin.`,
+  },
 ];

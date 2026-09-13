@@ -33,13 +33,13 @@ export function PricingIntro() {
     <HeadingPair>
       <HeadingMeasure>
         <Heading as="h1" size="lg" weight="light">
-          {i18n._(msg`Bêta Ouverte\n*& Accès Fondateur*`)}
+          {i18n._(msg`La cartographie 3D,\n*libre et indépendante.*`)}
         </Heading>
       </HeadingMeasure>
       <BodyMeasure>
         <Body muted size="sm">
           {i18n._(
-            msg`Explorez gratuitement le moteur 3D RedView sur le Web. Devenez Membre Fondateur pour financer l'application mobile et débloquer vos avantages à vie.`,
+            msg`Pas d'investisseurs, pas de revente de données. RedView est propulsé par sa communauté de montagnards. Explorez librement pendant la Bêta, ou devenez Membre Fondateur pour façonner l'outil et débloquer des privilèges à vie.`,
           )}
         </Body>
       </BodyMeasure>

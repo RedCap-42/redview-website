@@ -27,32 +27,32 @@ export const PLAN_TABLE_DATA: PlanTableDataType = {
     {
       featureLabel: msg`Contribution`,
       selfHostTiers: {
-        enterprise: { kind: 'text', text: msg`Dès 30€ (Don libre)` },
-        organization: { kind: 'text', text: msg`10€ (Paiement unique)` },
+        enterprise: { kind: 'text', text: msg`Dès 15€ (Don libre)` },
+        organization: { kind: 'text', text: msg`5€ (Paiement unique)` },
         pro: { kind: 'text', text: msg`0€ (Gratuit Bêta)` },
       },
       tiers: {
-        enterprise: { kind: 'text', text: msg`Dès 30€ (Don libre)` },
-        organization: { kind: 'text', text: msg`10€ (Paiement unique)` },
+        enterprise: { kind: 'text', text: msg`Dès 15€ (Don libre)` },
+        organization: { kind: 'text', text: msg`5€ (Paiement unique)` },
         pro: { kind: 'text', text: msg`0€ (Gratuit Bêta)` },
       },
       type: 'row',
     },
-    { title: msg`Privilèges Fondateurs & Accès Mobile`, type: 'category' },
+    { title: msg`Privilèges Fondateurs`, type: 'category' },
     {
-      featureLabel: msg`Accès Prioritaire Bêta Mobile (iOS TestFlight & Android)`,
+      featureLabel: msg`Accès Bêta prioritaire Application mobile iOS (TestFlight)`,
       tiers: {
-        enterprise: { kind: 'yes', label: msg`Accès VIP Immédiat` },
-        organization: { kind: 'yes', label: msg`Accès Prioritaire` },
+        enterprise: { kind: 'yes', label: msg`Accès VIP Alpha` },
+        organization: { kind: 'yes', label: msg`Accès Bêta Inclus` },
         pro: { kind: 'dash' },
       },
       type: 'row',
     },
     {
-      featureLabel: msg`Statut Fondateur (-50% à vie sur l'abonnement Pro)`,
+      featureLabel: msg`Badge officiel Membre Fondateur (Profil & Traces)`,
       tiers: {
-        enterprise: { kind: 'yes', label: msg`Garanti à vie` },
-        organization: { kind: 'yes', label: msg`Garanti à vie` },
+        enterprise: { kind: 'yes', label: msg`Insigne Mécène` },
+        organization: { kind: 'yes', label: msg`Badge Fondateur` },
         pro: { kind: 'dash' },
       },
       type: 'row',
@@ -67,19 +67,10 @@ export const PLAN_TABLE_DATA: PlanTableDataType = {
       type: 'row',
     },
     {
-      featureLabel: msg`1 An de compte PRO offert au lancement public`,
+      featureLabel: msg`3 mois de compte PRO offerts au lancement public`,
       tiers: {
-        enterprise: { kind: 'yes', label: msg`Offert (1 an)` },
+        enterprise: { kind: 'yes', label: msg`Offert (3 mois)` },
         organization: { kind: 'dash' },
-        pro: { kind: 'dash' },
-      },
-      type: 'row',
-    },
-    {
-      featureLabel: msg`Salon Discord privé & contact direct avec le développeur`,
-      tiers: {
-        enterprise: { kind: 'yes', label: msg`Contact Direct` },
-        organization: { kind: 'yes', label: msg`Inclus` },
         pro: { kind: 'dash' },
       },
       type: 'row',

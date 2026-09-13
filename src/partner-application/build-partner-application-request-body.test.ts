@@ -18,9 +18,9 @@ const minimalState: PartnerApplicationState = {
   city: 'London',
   hourlyRate: '150',
   projectBudgetMin: '5000',
-  twentyExperience: ['WORKFLOWS'],
-  twentyExperienceNotes: validExperienceNotes,
-  twentyExperienceProofLink: 'https://www.loom.com/share/example',
+  terrainExperience: ['WORKFLOWS'],
+  terrainExperienceNotes: validExperienceNotes,
+  terrainExperienceProofLink: 'https://www.loom.com/share/example',
 };
 
 describe('buildPartnerApplicationRequestBody', () => {
@@ -33,9 +33,9 @@ describe('buildPartnerApplicationRequestBody', () => {
       city: 'London',
       hourlyRate: 150,
       projectBudgetMin: 5000,
-      twentyExperience: ['WORKFLOWS'],
-      twentyExperienceNotes: validExperienceNotes,
-      twentyExperienceProofLink: 'https://www.loom.com/share/example',
+      terrainExperience: ['WORKFLOWS'],
+      terrainExperienceNotes: validExperienceNotes,
+      terrainExperienceProofLink: 'https://www.loom.com/share/example',
     });
   });
 
@@ -45,14 +45,14 @@ describe('buildPartnerApplicationRequestBody', () => {
       name: '  Ada Lovelace  ',
       email: '  ada@example.com  ',
       company: '  Analytical Engines Ltd  ',
-      twentyExperienceNotes: `  ${validExperienceNotes}  `,
-      twentyExperienceProofLink: '  https://www.loom.com/share/example  ',
+      terrainExperienceNotes: `  ${validExperienceNotes}  `,
+      terrainExperienceProofLink: '  https://www.loom.com/share/example  ',
     });
     expect(body.name).toBe('Ada Lovelace');
     expect(body.email).toBe('ada@example.com');
     expect(body.company).toBe('Analytical Engines Ltd');
-    expect(body.twentyExperienceNotes).toBe(validExperienceNotes);
-    expect(body.twentyExperienceProofLink).toBe(
+    expect(body.terrainExperienceNotes).toBe(validExperienceNotes);
+    expect(body.terrainExperienceProofLink).toBe(
       'https://www.loom.com/share/example',
     );
   });
@@ -97,14 +97,14 @@ describe('buildPartnerApplicationRequestBody', () => {
       languages: ['ENGLISH', 'FRENCH'],
       partnerScope: ['ADVISORY', 'SOLUTIONING'],
       skills: ['React', 'TypeScript'],
-      twentyExperience: ['CUSTOM_APPS', 'FRONT_COMPONENTS'],
+      terrainExperience: ['CUSTOM_APPS', 'FRONT_COMPONENTS'],
     });
     expect(filled.country).toBe('UNITED_KINGDOM');
     expect(filled.typeOfTeam).toBe('SOLO');
     expect(filled.languages).toEqual(['ENGLISH', 'FRENCH']);
     expect(filled.partnerScope).toEqual(['ADVISORY', 'SOLUTIONING']);
     expect(filled.skills).toEqual(['React', 'TypeScript']);
-    expect(filled.twentyExperience).toEqual([
+    expect(filled.terrainExperience).toEqual([
       'CUSTOM_APPS',
       'FRONT_COMPONENTS',
     ]);

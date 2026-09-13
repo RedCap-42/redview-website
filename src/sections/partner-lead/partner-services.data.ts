@@ -8,19 +8,19 @@ export type PartnerService = {
 
 export const PARTNER_SERVICES: readonly PartnerService[] = [
   {
-    title: msg`Migration`,
-    body: msg`Move your data out of Salesforce, HubSpot or spreadsheets.`,
+    title: msg`Données & imports`,
+    body: msg`Reprenez vos traces GPX, dalles LiDAR et projets depuis vos fichiers ou votre SIG actuel.`,
   },
   {
-    title: msg`Customization & apps`,
-    body: msg`Custom objects, workflows and apps built on the platform.`,
+    title: msg`Analyse & intégrations`,
+    body: msg`Chaînes de traitement LiDAR, calculs MNT/MNS et intégrations géospatiales sur mesure.`,
   },
   {
-    title: msg`Self-hosted operations`,
-    body: msg`Deploy, upgrade and operate RedView on your own infrastructure.`,
+    title: msg`Reconnaissance terrain`,
+    body: msg`Accompagnement d'itinéraires, lecture du manteau neigeux et préparation de courses engagées.`,
   },
   {
-    title: msg`Training & RevOps`,
-    body: msg`Onboard your team and design your sales process.`,
+    title: msg`Formation & accompagnement`,
+    body: msg`Formez vos équipes à la lecture topographique 3D et à la préparation de traces.`,
   },
 ];

@@ -34,7 +34,7 @@ export function ProductThreeCards() {
           <Eyebrow>{i18n._(msg`Stop settling for trade-offs.`)}</Eyebrow>
           <HeadingMeasure>
             <Heading as="h2" size="lg" weight="light">
-              {i18n._(msg`A modern CRM with *an intuitive interface*`)}
+              {i18n._(msg`A modern 3D terrain tool with *an intuitive interface*`)}
             </Heading>
           </HeadingMeasure>
         </SectionIntro>

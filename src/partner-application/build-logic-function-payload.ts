@@ -2,7 +2,7 @@ import { type PartnerCountryValue } from './data/partner-country-options';
 import { type PartnerLanguageValue } from './data/partner-language-options';
 import { type PartnerScopeValue } from './data/partner-scope-options';
 import { type PartnerTeamTypeValue } from './data/partner-team-type-options';
-import { type PartnerTwentyExperienceValue } from './data/partner-twenty-experience-options';
+import { type PartnerTerrainExperienceValue } from './data/partner-terrain-experience-options';
 import { type PartnerApplicationRequest } from './partner-application-request-schema';
 import { splitFullName } from './split-full-name';
 
@@ -22,9 +22,9 @@ export type PartnerApplicationLogicFunctionPayload = {
   typeOfTeam?: PartnerTeamTypeValue;
   partnerScope?: readonly PartnerScopeValue[];
   skills?: readonly string[];
-  twentyExperience: readonly PartnerTwentyExperienceValue[];
-  twentyExperienceNotes: string;
-  twentyExperienceProofLink: string;
+  terrainExperience: readonly PartnerTerrainExperienceValue[];
+  terrainExperienceNotes: string;
+  terrainExperienceProofLink: string;
   hourlyRate?: number;
   projectBudgetMin?: number;
   calendarLink?: string;
@@ -40,9 +40,9 @@ export function buildLogicFunctionPayload(
     lastName,
     email: request.email,
     companyName: request.company,
-    twentyExperience: request.twentyExperience,
-    twentyExperienceNotes: request.twentyExperienceNotes,
-    twentyExperienceProofLink: request.twentyExperienceProofLink,
+    terrainExperience: request.terrainExperience,
+    terrainExperienceNotes: request.terrainExperienceNotes,
+    terrainExperienceProofLink: request.terrainExperienceProofLink,
   };
 
   if (request.website !== undefined) payload.domainName = request.website;

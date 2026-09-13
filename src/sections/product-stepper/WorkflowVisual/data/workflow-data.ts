@@ -16,8 +16,8 @@ export const WORKFLOW_GRAPH: {
   nodes: [
     {
       id: 'trigger',
-      type: msg`Trigger`,
-      label: msg`Record is Created`,
+      type: msg`Déclencheur`,
+      label: msg`GPX importé`,
       icon: 'playlistAdd',
       accent: 'blue',
       x: TRUNK_X,
@@ -26,7 +26,7 @@ export const WORKFLOW_GRAPH: {
     {
       id: 'filter',
       type: msg`Action`,
-      label: msg`Filter`,
+      label: msg`Résolution MNT 40 cm`,
       icon: 'filter',
       accent: 'green',
       x: TRUNK_X,
@@ -35,7 +35,7 @@ export const WORKFLOW_GRAPH: {
     {
       id: 'search',
       type: msg`Action`,
-      label: msg`Search Records`,
+      label: msg`Corridor POI OSM`,
       icon: 'search',
       accent: 'gray',
       x: TRUNK_X,
@@ -44,7 +44,7 @@ export const WORKFLOW_GRAPH: {
     {
       id: 'ai',
       type: msg`Action`,
-      label: msg`AI Agent`,
+      label: msg`Moteur neige`,
       icon: 'brain',
       accent: 'pink',
       x: TRUNK_X,
@@ -53,7 +53,7 @@ export const WORKFLOW_GRAPH: {
     {
       id: 'update',
       type: msg`Action`,
-      label: msg`Update Record`,
+      label: msg`Ensoleillement`,
       icon: 'reload',
       accent: 'gray',
       x: LEFT_X,
@@ -62,7 +62,7 @@ export const WORKFLOW_GRAPH: {
     {
       id: 'email',
       type: msg`Action`,
-      label: msg`Send Email`,
+      label: msg`Estimation ETA`,
       icon: 'send',
       accent: 'red',
       x: TRUNK_X,
@@ -71,7 +71,7 @@ export const WORKFLOW_GRAPH: {
     {
       id: 'create',
       type: msg`Action`,
-      label: msg`Create Record`,
+      label: msg`Export GPX`,
       icon: 'plus',
       accent: 'gray',
       x: RIGHT_X,

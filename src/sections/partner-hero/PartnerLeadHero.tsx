@@ -84,7 +84,7 @@ export function PartnerLeadHero() {
           <BodyMeasure>
             <Body muted size="sm">
               {i18n._(
-                msg`Certified partners who set up your CRM to match how your company works, from the migration to the custom apps.`,
+                msg`Certified partners who set up RedView to match how you work in the field, from the terrain analysis to the custom exports.`,
               )}
             </Body>
           </BodyMeasure>

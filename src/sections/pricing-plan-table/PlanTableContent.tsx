@@ -185,7 +185,24 @@ const YesRow = styled.div`
   align-items: center;
   column-gap: ${spacing(2)};
   display: flex;
+  justify-content: flex-start;
+  margin-inline: auto;
+  max-width: 100%;
+  text-align: left;
+  width: 140px;
+
+  ${mediaUp('md')} {
+    width: 154px;
+  }
+`;
+
+const CheckMarkWrap = styled.span`
+  align-items: center;
+  display: inline-flex;
+  flex-shrink: 0;
+  height: 16px;
   justify-content: center;
+  width: 16px;
 `;
 
 const CategoryGridBand = styled.div`
@@ -271,7 +288,9 @@ function CellValue({ cell }: { cell: PlanTableCellType }) {
 
   return (
     <YesRow>
-      <CheckMark color={color('blue')} sizePx={16} />
+      <CheckMarkWrap>
+        <CheckMark color={color('blue')} sizePx={16} />
+      </CheckMarkWrap>
       <TierText>{i18n._(cell.label ?? msg`Inclus`)}</TierText>
     </YesRow>
   );

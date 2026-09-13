@@ -12,40 +12,40 @@ describe('validatePartnerApplicationStep', () => {
       ...INITIAL_PARTNER_APPLICATION_STATE,
       stepIndex: 3,
     });
-    expect(errors.twentyExperience).toBe('required');
-    expect(errors.twentyExperienceNotes).toBe('required');
-    expect(errors.twentyExperienceProofLink).toBe('required');
+    expect(errors.terrainExperience).toBe('required');
+    expect(errors.terrainExperienceNotes).toBe('required');
+    expect(errors.terrainExperienceProofLink).toBe('required');
   });
 
   it('rejects a narrative under 200 characters on Experience', () => {
     const errors = validatePartnerApplicationStep({
       ...INITIAL_PARTNER_APPLICATION_STATE,
       stepIndex: 3,
-      twentyExperience: ['WORKFLOWS'],
-      twentyExperienceNotes: 'Too short for a real implementation narrative.',
-      twentyExperienceProofLink: 'https://www.loom.com/share/example',
+      terrainExperience: ['WORKFLOWS'],
+      terrainExperienceNotes: 'Too short for a real implementation narrative.',
+      terrainExperienceProofLink: 'https://www.loom.com/share/example',
     });
-    expect(errors.twentyExperienceNotes).toBe('too_short');
+    expect(errors.terrainExperienceNotes).toBe('too_short');
   });
 
   it('rejects an invalid proof URL on Experience', () => {
     const errors = validatePartnerApplicationStep({
       ...INITIAL_PARTNER_APPLICATION_STATE,
       stepIndex: 3,
-      twentyExperience: ['CUSTOM_APPS'],
-      twentyExperienceNotes: validExperienceNotes,
-      twentyExperienceProofLink: 'not-a-url',
+      terrainExperience: ['CUSTOM_APPS'],
+      terrainExperienceNotes: validExperienceNotes,
+      terrainExperienceProofLink: 'not-a-url',
     });
-    expect(errors.twentyExperienceProofLink).toBe('invalid_url');
+    expect(errors.terrainExperienceProofLink).toBe('invalid_url');
   });
 
   it('accepts a complete Experience step', () => {
     const errors = validatePartnerApplicationStep({
       ...INITIAL_PARTNER_APPLICATION_STATE,
       stepIndex: 3,
-      twentyExperience: ['CUSTOM_APPS', 'DATA_MODELS'],
-      twentyExperienceNotes: validExperienceNotes,
-      twentyExperienceProofLink: 'https://www.loom.com/share/example',
+      terrainExperience: ['CUSTOM_APPS', 'DATA_MODELS'],
+      terrainExperienceNotes: validExperienceNotes,
+      terrainExperienceProofLink: 'https://www.loom.com/share/example',
     });
     expect(errors).toEqual({});
   });

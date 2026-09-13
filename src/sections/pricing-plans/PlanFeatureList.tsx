@@ -16,9 +16,9 @@ const FEATURE_SWITCH_ANIMATION_MS =
   FEATURE_TRANSITION_TIMING.switchMilliseconds;
 const FEATURE_ITEM_STAGGER_MS = FEATURE_TRANSITION_TIMING.staggerMilliseconds;
 
-const FEATURE_ITEM_EXPANDED_HEIGHT = spacing(7);
+const FEATURE_ITEM_EXPANDED_HEIGHT = spacing(8);
 const FEATURE_ITEM_SPACING = spacing(2.5);
-const FEATURE_LIST_ROW_LAYOUT_HEIGHT = spacing(5);
+const FEATURE_LIST_ROW_LAYOUT_HEIGHT = spacing(8);
 
 const FeaturesViewport = styled.div<{ $featuresHeight: string }>`
   flex: 1 1 auto;
@@ -45,8 +45,9 @@ const FeatureList = styled.ul`
 const FeatureCheck = styled.span`
   align-items: center;
   display: inline-flex;
-  height: 16px;
+  height: 20px;
   justify-content: center;
+  margin-top: 1px;
   width: 16px;
 `;
 
@@ -82,7 +83,7 @@ const FeatureItem = styled.li<{
     }
   }
 
-  align-items: center;
+  align-items: flex-start;
   column-gap: ${spacing(2)};
   display: grid;
   grid-template-columns: auto 1fr;

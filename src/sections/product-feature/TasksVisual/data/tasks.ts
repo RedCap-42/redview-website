@@ -6,37 +6,39 @@ import { type Task } from '../types/task';
 
 const PEOPLE = sharedAssetUrls.peopleAvatars;
 
+// Illustrative analysis checklist for the product mockup. Names are generic
+// avatars; no real person is represented.
 export const TASKS: Task[] = [
   {
-    body: msg`Loop in legal before sending.`,
+    body: msg`Relancer le moteur neige sur la variante nord.`,
     done: false,
-    due: 'Jul 22, 2026',
-    id: 'send-nda',
-    target: { avatarUrl: PEOPLE.anonymousFelix, name: 'Félix Malfait' },
-    title: msg`Send NDA`,
+    due: '22 juil. 2026',
+    id: 'recompute-snow',
+    target: { avatarUrl: PEOPLE.anonymousFelix, name: 'Simon' },
+    title: msg`Analyse neige`,
   },
   {
-    body: msg`Send the updated annual quote.`,
+    body: msg`Corridor POI réglé à 200 m autour du GPX.`,
     done: false,
-    due: 'Jul 24, 2026',
-    id: 'follow-up-pricing',
-    target: { avatarUrl: PEOPLE.anonymousFelix, name: 'Félix Malfait' },
-    title: msg`Follow up on pricing`,
+    due: '24 juil. 2026',
+    id: 'set-poi-corridor',
+    target: { avatarUrl: PEOPLE.anonymousFelix, name: 'Simon' },
+    title: msg`Vérifier les points d'eau`,
   },
   {
-    body: msg`Use the Q3 template.`,
+    body: msg`Le profil BRF interdit les dalles au-delà de 15 %.`,
     done: false,
-    due: 'Jul 26, 2026',
-    id: 'prepare-onboarding-deck',
-    target: { avatarUrl: PEOPLE.anonymousFelix, name: 'Félix Malfait' },
-    title: msg`Prepare onboarding deck`,
+    due: '26 juil. 2026',
+    id: 'tune-brf-profile',
+    target: { avatarUrl: PEOPLE.anonymousFelix, name: 'Simon' },
+    title: msg`Ajuster le profil BRouter`,
   },
   {
-    body: msg`Coordinated with the IT team.`,
+    body: msg`Export GPX et fiche d'itinéraire partagés.`,
     done: true,
-    due: 'Jul 18, 2026',
-    id: 'schedule-security-review',
-    target: { avatarUrl: PEOPLE.anonymousFelix, name: 'Félix Malfait' },
-    title: msg`Schedule security review`,
+    due: '18 juil. 2026',
+    id: 'export-gpx',
+    target: { avatarUrl: PEOPLE.anonymousFelix, name: 'Simon' },
+    title: msg`Export GPX`,
   },
 ];

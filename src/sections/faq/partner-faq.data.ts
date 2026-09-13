@@ -4,27 +4,27 @@ import { type FaqQuestion } from './faq.data';
 
 export const PARTNER_FAQ_QUESTIONS: readonly FaqQuestion[] = [
   {
-    question: msg`How does matching work?`,
-    answer: msg`Share a short brief on your project, timeline, and budget. We hand-pick certified partners who fit and introduce you within 48 hours.`,
+    question: msg`Comment fonctionne la mise en relation ?`,
+    answer: msg`Partagez un court cahier des charges : projet, délai et budget. Nous sélectionnons les partenaires certifiés qui correspondent et vous mettons en relation sous 48 heures.`,
   },
   {
-    question: msg`What do partners charge?`,
-    answer: msg`Rates vary by partner and scope. Each partner profile lists their published rates, and you can compare before booking a call.`,
+    question: msg`Combien facturent les partenaires ?`,
+    answer: msg`Les tarifs varient selon le partenaire et le périmètre. Chaque profil partenaire affiche ses tarifs, que vous pouvez comparer avant de réserver un appel.`,
   },
   {
-    question: msg`How are partners vetted?`,
-    answer: msg`Every partner is certified by RedView and reviewed on delivered projects, technical depth, and customer feedback before joining the directory.`,
+    question: msg`Comment les partenaires sont-ils sélectionnés ?`,
+    answer: msg`Chaque partenaire est certifié par RedView et évalué sur des projets livrés, la profondeur technique et les retours clients avant de rejoindre l'annuaire.`,
   },
   {
-    question: msg`Can a partner run my migration?`,
-    answer: msg`Yes. Migration partners move your data out of Salesforce, HubSpot, or spreadsheets, and can own the full cutover for you.`,
+    question: msg`Un partenaire peut-il reprendre mes données existantes ?`,
+    answer: msg`Oui. Les partenaires « données » importent vos traces GPX, vos dalles LiDAR et vos projets depuis vos fichiers ou votre SIG actuel, et peuvent prendre en charge toute la bascule.`,
   },
   {
-    question: msg`Do partners support self-hosting?`,
-    answer: msg`Yes. Some partners specialise in deploying, upgrading, and operating self-hosted RedView instances on your own infrastructure.`,
+    question: msg`Les partenaires accompagnent-ils le traitement LiDAR ?`,
+    answer: msg`Oui. Certains partenaires sont spécialisés dans le traitement de dalles LiDAR, la génération de MNT/MNS et l'intégration de chaînes de données géospatiales dans RedView.`,
   },
   {
-    question: msg`How do I become a partner?`,
-    answer: msg`Agencies and freelancers apply through the RedView partner program page, which lists the requirements and carries the application form.`,
+    question: msg`Comment devenir partenaire ?`,
+    answer: msg`Les guides, bureaux d'études, formateurs et intégrateurs postulent via la page du programme partenaire RedView, qui liste les prérequis et porte le formulaire de candidature.`,
   },
 ];

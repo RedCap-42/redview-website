@@ -39,7 +39,7 @@ describe('EmailsVisual', () => {
 
     expect(
       screen.getByText(
-        "Hey team, I've been in touch with Notion and Figma about potential integrations.",
+        "J'ai relancé le moteur neige sur la trace : 40 cm de fraîche au col, le passage nord reste chargé.",
       ),
     ).toBeInTheDocument();
     expect(screen.getByText('Félix, Thomas')).toBeInTheDocument();

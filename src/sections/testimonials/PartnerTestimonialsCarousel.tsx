@@ -215,6 +215,12 @@ export function PartnerTestimonialsCarousel({
   const hasPrevious = index > 0;
   const hasNext = index < total - 1;
   const current = testimonials[index];
+
+  // Nothing to say until a real, consented testimonial exists.
+  if (current === undefined) {
+    return null;
+  }
+
   const authorName = i18n._(current.author.name);
 
   return (

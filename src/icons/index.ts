@@ -19,5 +19,5 @@ export { MinusMark, type MinusMarkProps } from './MinusMark';
 export { PlusMark, type PlusMarkProps } from './PlusMark';
 export { RatingStar, type RatingStarProps } from './RatingStar';
 export { Search, type SearchProps } from './Search';
-export { RedViewLogo, type RedViewLogoProps, TwentyLogo, type TwentyLogoProps } from './RedViewLogo';
+export { RedViewLogo, type RedViewLogoProps } from './RedViewLogo';
 export { type IconComponent } from './icon-component';
