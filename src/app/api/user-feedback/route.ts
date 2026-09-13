@@ -74,6 +74,13 @@ export async function POST(request: Request) {
       submittedAt = new Date().toISOString(),
     } = payload;
 
+    if (!description.trim() && !feedbackType.trim()) {
+      return NextResponse.json(
+        { error: 'Veuillez renseigner une description ou le type de retour.' },
+        { status: 400 },
+      );
+    }
+
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
       console.error('[user-feedback] Missing RESEND_API_KEY environment variable');
