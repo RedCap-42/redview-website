@@ -106,6 +106,7 @@ export type SectionShellProps = {
   ariaLabel?: string;
   background?: ReactNode;
   children: ReactNode;
+  className?: string;
   connectsUp?: boolean;
   flushInline?: boolean;
   fullBleedBackground?: boolean;
@@ -118,6 +119,7 @@ export function SectionShell({
   ariaLabel,
   background,
   children,
+  className,
   connectsUp = false,
   flushInline = false,
   fullBleedBackground = false,
@@ -128,7 +130,7 @@ export function SectionShell({
   return (
     <section
       aria-label={ariaLabel}
-      className={sectionShellClassName}
+      className={className ? `${sectionShellClassName} ${className}` : sectionShellClassName}
       data-connect-up={connectsUp ? '' : undefined}
       data-keep-top-rhythm={keepsTopRhythm ? '' : undefined}
       data-menu-surface=""

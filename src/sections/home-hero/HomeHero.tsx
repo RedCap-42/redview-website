@@ -6,11 +6,11 @@ import { SITE_URLS } from '@/platform/site-urls';
 import { GRADIENT, mediaUp, MENU_HEIGHT_PX, spacing } from '@/tokens';
 import { Body, Button, Heading, HeadingPair, SectionShell } from '@/ui';
 
-import { HeroBackdrop } from './HeroBackdrop';
+import { HeroGlobe } from './HeroGlobe';
 
 const GradientBackdrop = styled.div`
   background: ${GRADIENT.heroGlow};
-  inset: 0 -20%;
+  inset: 0;
   position: absolute;
 `;
 
@@ -21,18 +21,19 @@ const HeroViewport = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   min-height: calc(100svh - ${MENU_HEIGHT_PX}px);
-  padding-top: ${spacing(16)};
+  padding-top: ${spacing(8)};
   padding-bottom: ${spacing(8)};
+  pointer-events: none;
   width: 100%;
 
   ${mediaUp('md')} {
     min-height: calc(100vh - ${MENU_HEIGHT_PX}px);
-    padding-top: ${spacing(22)};
-    padding-bottom: ${spacing(12)};
+    padding-top: ${spacing(10)};
+    padding-bottom: ${spacing(10)};
   }
 
   ${mediaUp('lg')} {
-    padding-top: ${spacing(26)};
+    padding-top: ${spacing(12)};
   }
 `;
 
@@ -40,6 +41,7 @@ const IntroStack = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
+  pointer-events: auto;
   text-align: center;
   width: 100%;
 
@@ -73,7 +75,7 @@ export function HomeHero() {
     <SectionShell
       background={
         <GradientBackdrop>
-          <HeroBackdrop />
+          <HeroGlobe />
         </GradientBackdrop>
       }
       fullBleedBackground
